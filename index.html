@@ -22,238 +22,251 @@
         };
     </script>
     <title>LaraGigs | Find Laravel Jobs & Projects</title>
+
+    <style>
+        /* Optional: smoothen font rendering a bit across browsers */
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
 </head>
 
-<body class="mb-48">
-    <nav class="flex justify-between items-center mb-4">
-        <a href="index.html"><img class="w-24" src="images/logo.png" alt="" class="logo" /></a>
-        <ul class="flex space-x-6 mr-6 text-lg">
-            <li>
-                <a href="register.html" class="hover:text-laravel"><i class="fa-solid fa-user-plus"></i> Register</a>
-            </li>
-            <li>
-                <a href="login.html" class="hover:text-laravel"><i class="fa-solid fa-arrow-right-to-bracket"></i>
-                    Login</a>
-            </li>
-        </ul>
+<body class="bg-gray-50 text-gray-800 antialiased">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex h-16 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img class="h-9 w-auto" src="images/logo.png" alt="LaraGigs logo" />
+                    <span class="sr-only">LaraGigs</span>
+                </a>
+                <ul class="flex items-center gap-3 text-sm font-medium">
+                    <li>
+                        <a href="register.html"
+                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-gray-700 shadow-sm hover:text-laravel hover:border-laravel/40 transition">
+                            <i class="fa-solid fa-user-plus"></i>
+                            Register
+                        </a>
+                    </li>
+                    <li>
+                        <a href="login.html"
+                            class="inline-flex items-center gap-2 rounded-full bg-laravel px-4 py-2 text-white shadow-sm hover:bg-red-600 transition">
+                            <i class="fa-solid fa-arrow-right-to-bracket"></i>
+                            Login
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <!-- Hero -->
-    <section class="relative h-72 bg-laravel flex flex-col justify-center align-center text-center space-y-4 mb-4">
-        <div class="absolute top-0 left-0 w-full h-full opacity-10 bg-no-repeat bg-center"
+    <section class="relative overflow-hidden bg-gradient-to-br from-laravel to-rose-600">
+        <div class="absolute inset-0 opacity-10 bg-no-repeat bg-center"
             style="background-image: url('images/laravel-logo.png')"></div>
-
-        <div class="z-10">
-            <h1 class="text-6xl font-bold uppercase text-white">
-                Lara<span class="text-black">Gigs</span>
-            </h1>
-            <p class="text-2xl text-gray-200 font-bold my-4">
-                Find or post Laravel jobs & projects
-            </p>
-            <div>
-                <a href="register.html"
-                    class="inline-block border-2 border-white text-white py-2 px-4 rounded-xl uppercase mt-2 hover:text-black hover:border-black">Sign
-                    Up to List a Gig</a>
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="h-[380px] flex flex-col justify-center items-center text-center space-y-4">
+                <h1 class="text-5xl md:text-6xl font-extrabold tracking-tight text-white">
+                    Lara<span class="text-black drop-shadow-sm">Gigs</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-rose-100 font-semibold max-w-2xl">
+                    Find or post Laravel jobs & projects
+                </p>
+                <div class="pt-2">
+                    <a href="register.html"
+                        class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-laravel font-semibold shadow-lg hover:shadow-xl hover:bg-gray-100 transition">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        Sign Up to List a Gig
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <main>
         <!-- Search -->
-        <form action="">
-            <div class="relative border-2 border-gray-100 m-4 rounded-lg">
-                <div class="absolute top-4 left-3">
-                    <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
-                </div>
-                <input type="text" name="search"
-                    class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-                    placeholder="Search Laravel Gigs..." />
-                <div class="absolute top-2 right-2">
-                    <button type="submit" class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">
-                        Search
-                    </button>
+        <form action="" class="relative z-20 -mt-8">
+            <div class="max-w-3xl mx-auto px-4">
+                <div class="relative rounded-2xl bg-white ring-1 ring-gray-100 shadow-lg">
+                    <div class="absolute top-4 left-4">
+                        <i class="fa fa-search text-gray-400"></i>
+                    </div>
+                    <input type="text" name="search"
+                        class="h-14 w-full rounded-2xl bg-transparent pl-12 pr-32 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel"
+                        placeholder="Search Laravel Gigs..." />
+                    <div class="absolute top-2 right-2">
+                        <button type="submit"
+                            class="inline-flex h-10 items-center justify-center rounded-xl bg-laravel px-5 text-white shadow hover:bg-red-600 transition">
+                            Search
+                        </button>
+                    </div>
                 </div>
             </div>
         </form>
 
-        <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
+        <div class="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6">
             <!-- Item 1 -->
-            <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                <div class="flex">
-                    <img class="hidden w-48 mr-6 md:block" src="images/acme.png" alt="" />
-                    <div>
-                        <h3 class="text-2xl">
+            <div
+                class="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+                <div class="flex gap-4">
+                    <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm" src="images/acme.png"
+                        alt="Acme Corp" />
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-laravel transition">
                             <a href="view.html">Senior Laravel Developer</a>
                         </h3>
-                        <div class="text-xl font-bold mb-4">Acme Corp</div>
-                        <ul class="flex">
+                        <div class="text-base font-semibold text-gray-700 mb-3">Acme Corp</div>
+                        <ul class="flex flex-wrap gap-2">
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">Laravel</a>
                             </li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">API</a>
                             </li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">Backend</a>
                             </li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">Vue</a>
                             </li>
                         </ul>
-                        <div class="text-lg mt-4">
-                            <i class="fa-solid fa-location-dot"></i> Boston,
-                            MA
+                        <div class="text-sm text-gray-500 mt-4">
+                            <i class="fa-solid fa-location-dot"></i> Boston, MA
                         </div>
                     </div>
                 </div>
             </div>
             <!-- Item 2 -->
-            <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                <div class="flex">
-                    <img class="hidden w-48 mr-6 md:block" src="images/stark.png" alt="" />
-                    <div>
-                        <h3 class="text-2xl">
+            <div
+                class="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+                <div class="flex gap-4">
+                    <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm" src="images/stark.png"
+                        alt="Stark Industries" />
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-laravel transition">
                             <a href="view.html">Full-Stack Engineer</a>
                         </h3>
-                        <div class="text-xl font-bold mb-4">
-                            Stark Industries
-                        </div>
-                        <ul class="flex">
+                        <div class="text-base font-semibold text-gray-700 mb-3">Stark Industries</div>
+                        <ul class="flex flex-wrap gap-2">
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Laravel</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Laravel</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">API</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                API</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Backend</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Backend</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Vue</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Vue</li>
                         </ul>
-                        <div class="text-lg mt-4">
-                            <i class="fa-solid fa-location-dot"></i>
-                            Lawrence, MA
+                        <div class="text-sm text-gray-500 mt-4">
+                            <i class="fa-solid fa-location-dot"></i> Lawrence, MA
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Item 3 -->
-            <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                <div class="flex">
-                    <img class="hidden w-48 mr-6 md:block" src="images/wayne.png" alt="" />
-                    <div>
-                        <h3 class="text-2xl">
+            <div
+                class="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+                <div class="flex gap-4">
+                    <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm" src="images/wayne.png"
+                        alt="Wayne Enterprises" />
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-laravel transition">
                             <a href="view.html">Laravel Developer</a>
                         </h3>
-                        <div class="text-xl font-bold mb-4">
-                            Wayne Enterprises
-                        </div>
-                        <ul class="flex">
+                        <div class="text-base font-semibold text-gray-700 mb-3">Wayne Enterprises</div>
+                        <ul class="flex flex-wrap gap-2">
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Laravel</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Laravel</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">API</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                API</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Backend</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Backend</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                <a href="#">Vue</a>
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Vue</li>
                         </ul>
-                        <div class="text-lg mt-4">
-                            <i class="fa-solid fa-location-dot"></i> Newark,
-                            NJ
+                        <div class="text-sm text-gray-500 mt-4">
+                            <i class="fa-solid fa-location-dot"></i> Newark, NJ
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Item 4 -->
-            <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                <div class="flex">
-                    <img class="hidden w-48 mr-6 md:block" src="images/skynet.png" alt="" />
-                    <div>
-                        <h3 class="text-2xl">
+            <div
+                class="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+                <div class="flex gap-4">
+                    <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm" src="images/skynet.png"
+                        alt="Skynet Systems" />
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-laravel transition">
                             <a href="view.html">Backend Laravel Dev</a>
                         </h3>
-                        <div class="text-xl font-bold mb-4">
-                            Skynet Systems
-                        </div>
-                        <ul class="flex">
+                        <div class="text-base font-semibold text-gray-700 mb-3">Skynet Systems</div>
+                        <ul class="flex flex-wrap gap-2">
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                Laravel
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Laravel</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                API
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                API</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                Backend
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Backend</li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
-                                Vue
-                            </li>
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
+                                Vue</li>
                         </ul>
-                        <div class="text-lg mt-4">
-                            <i class="fa-solid fa-location-dot"></i>
-                            Daytona, FL
+                        <div class="text-sm text-gray-500 mt-4">
+                            <i class="fa-solid fa-location-dot"></i> Daytona, FL
                         </div>
                     </div>
                 </div>
             </div>
 
             <!-- Item 5 -->
-            <div class="bg-gray-50 border border-gray-200 rounded p-6">
-                <div class="flex">
-                    <img class="hidden w-48 mr-6 md:block" src="images/wonka.png" alt="" />
-                    <div>
-                        <h3 class="text-2xl">
+            <div
+                class="group bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition">
+                <div class="flex gap-4">
+                    <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm" src="images/wonka.png"
+                        alt="Wonka Industries" />
+                    <div class="flex-1">
+                        <h3 class="text-xl font-semibold text-gray-900 group-hover:text-laravel transition">
                             <a href="view.html">Junior Developer</a>
                         </h3>
-                        <div class="text-xl font-bold mb-4">
-                            Wonka Industries
-                        </div>
-                        <ul class="flex">
+                        <div class="text-base font-semibold text-gray-700 mb-3">Wonka Industries</div>
+                        <ul class="flex flex-wrap gap-2">
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">Laravel</a>
                             </li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">API</a>
                             </li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">Backend</a>
                             </li>
                             <li
-                                class="flex items-center justify-center bg-black text-white rounded-xl py-1 px-3 mr-2 text-xs">
+                                class="inline-flex items-center rounded-full bg-gray-100 text-gray-700 px-3 py-1 text-xs font-medium hover:bg-laravel hover:text-white transition">
                                 <a href="#">Vue</a>
                             </li>
                         </ul>
-                        <div class="text-lg mt-4">
-                            <i class="fa-solid fa-location-dot"></i> San
-                            Francisco, CA
+                        <div class="text-sm text-gray-500 mt-4">
+                            <i class="fa-solid fa-location-dot"></i> San Francisco, CA
                         </div>
                     </div>
                 </div>
@@ -261,11 +274,17 @@
         </div>
     </main>
 
-    <footer
-        class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
-        <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
+    <!-- Floating Action Button -->
+    <a href="create.html"
+        class="fixed bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-laravel px-5 py-3 text-white shadow-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-white/60">
+        <i class="fa-solid fa-plus"></i>
+        Post Job
+    </a>
 
-        <a href="create.html" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
+    <footer class="mt-16 border-t bg-white">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-center">
+            <p class="text-sm text-gray-600">Copyright &copy; 2022, All Rights reserved</p>
+        </div>
     </footer>
 </body>
 

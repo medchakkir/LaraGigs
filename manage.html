@@ -22,108 +22,124 @@
             },
         };
     </script>
+    <style>
+        html {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+    </style>
     <title>LaraGigs | Find Laravel Jobs & Projects</title>
 </head>
 
-<body class="mb-48">
-    <nav class="flex justify-between items-center mb-4">
-        <a href="index.html"><img class="w-24" src="images/logo.png" alt="" class="logo" /></a>
-        <ul class="flex space-x-6 mr-6 text-lg">
-            <li>
-                <a href="manage.html" class="hover:text-laravel"><i class="fa-solid fa-gear"></i> Manage Gigs</a>
-            </li>
-            <li>
-                <form action="index.html">
-                    <button>
-                        <i class="fa-solid fa-door-closed"></i> Logout
-                    </button>
-                </form>
-            </li>
-        </ul>
+<body class="bg-gray-50 text-gray-800 antialiased">
+    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex h-16 items-center justify-between">
+                <a href="index.html" class="flex items-center gap-3">
+                    <img class="h-9 w-auto" src="images/logo.png" alt="LaraGigs logo" />
+                    <span class="sr-only">LaraGigs</span>
+                </a>
+                <ul class="flex items-center gap-3 text-sm font-medium">
+                    <li>
+                        <a href="create.html"
+                            class="inline-flex items-center gap-2 rounded-full bg-laravel px-4 py-2 text-white shadow-sm hover:bg-red-600 transition">
+                            <i class="fa-solid fa-plus"></i>
+                            Post Job
+                        </a>
+                    </li>
+                    <li>
+                        <form action="index.html">
+                            <button
+                                class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-200 transition">
+                                <i class="fa-solid fa-door-closed"></i>
+                                Logout
+                            </button>
+                        </form>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </nav>
 
     <main>
-        <!-- Search -->
-        <form action="/">
-            <div class="relative border-2 border-gray-100 m-4 rounded-lg">
-                <div class="absolute top-4 left-3">
-                    <i class="fa fa-search text-gray-400 z-20 hover:text-gray-500"></i>
-                </div>
-                <input type="text" name="search"
-                    class="h-14 w-full pl-10 pr-20 rounded-lg z-0 focus:shadow focus:outline-none"
-                    placeholder="Search Laravel Gigs..." />
-                <div class="absolute top-2 right-2">
-                    <button type="submit" class="h-10 w-20 text-white rounded-lg bg-red-500 hover:bg-red-600">
-                        Search
-                    </button>
-                </div>
-            </div>
-        </form>
-
-        <div class="mx-4">
-            <div class="bg-gray-50 border border-gray-200 p-10 rounded">
-                <header>
-                    <h1 class="text-3xl text-center font-bold my-6 uppercase">
-                        Manage Gigs
-                    </h1>
+        <div class="max-w-4xl mx-auto px-4 py-8">
+            <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+                <header class="text-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-900 mb-2">Manage Gigs</h1>
+                    <p class="text-gray-600">Manage your job listings</p>
                 </header>
 
-                <table class="w-full table-auto rounded-sm">
-                    <tbody>
-                        <!-- Job 1 -->
-                        <tr class="border-gray-300">
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="view.html">
-                                    Laravel Senior Developer
-                                </a>
-                            </td>
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="edit.html" class="text-blue-400 px-6 py-2 rounded-xl"><i
-                                        class="fa-solid fa-pen-to-square"></i>
-                                    Edit</a>
-                            </td>
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <form action="">
-                                    <button class="text-red-600">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
+                <div class="overflow-hidden rounded-xl border border-gray-200">
+                    <table class="w-full">
+                        <thead class="bg-gray-50 border-b border-gray-200">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Job Title</th>
+                                <th class="px-6 py-4 text-left text-sm font-medium text-gray-700">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-200">
+                            <!-- Job 1 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-6 py-4">
+                                    <a href="view.html"
+                                        class="text-lg font-medium text-gray-900 hover:text-laravel transition">
+                                        Laravel Senior Developer
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <a href="edit.html"
+                                            class="inline-flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-100 transition">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            Edit
+                                        </a>
+                                        <form action="" class="inline">
+                                            <button
+                                                class="inline-flex items-center gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100 transition">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
 
-                        <!-- Job 2 -->
-                        <tr class="border-gray-300">
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="view.html">
-                                    Junior Developer Opening
-                                </a>
-                            </td>
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <a href="edit.html" class="text-blue-400 px-6 py-2 rounded-xl"><i
-                                        class="fa-solid fa-pen-to-square"></i>
-                                    Edit</a>
-                            </td>
-                            <td class="px-4 py-8 border-t border-b border-gray-300 text-lg">
-                                <form action="">
-                                    <button class="text-red-600">
-                                        <i class="fa-solid fa-trash-can"></i>
-                                        Delete
-                                    </button>
-                                </form>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+                            <!-- Job 2 -->
+                            <tr class="hover:bg-gray-50 transition">
+                                <td class="px-6 py-4">
+                                    <a href="view.html"
+                                        class="text-lg font-medium text-gray-900 hover:text-laravel transition">
+                                        Junior Developer Opening
+                                    </a>
+                                </td>
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <a href="edit.html"
+                                            class="inline-flex items-center gap-2 rounded-lg bg-blue-50 px-3 py-2 text-sm font-medium text-blue-700 hover:bg-blue-100 transition">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                            Edit
+                                        </a>
+                                        <form action="" class="inline">
+                                            <button
+                                                class="inline-flex items-center gap-2 rounded-lg bg-red-50 px-3 py-2 text-sm font-medium text-red-700 hover:bg-red-100 transition">
+                                                <i class="fa-solid fa-trash-can"></i>
+                                                Delete
+                                            </button>
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </main>
 
-    <footer
-        class="fixed bottom-0 left-0 w-full flex items-center justify-start font-bold bg-laravel text-white h-24 mt-24 opacity-90 md:justify-center">
-        <p class="ml-2">Copyright &copy; 2022, All Rights reserved</p>
-
-        <a href="create.html" class="absolute top-1/3 right-10 bg-black text-white py-2 px-5">Post Job</a>
+    <footer class="mt-16 border-t bg-white">
+        <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-center">
+            <p class="text-sm text-gray-600">Copyright &copy; 2022, All Rights reserved</p>
+        </div>
     </footer>
 </body>
 
