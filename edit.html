@@ -12,6 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -30,8 +31,10 @@
     <title>LaraGigs | Find Laravel Jobs & Projects</title>
 </head>
 
-<body class="bg-gray-50 text-gray-800 antialiased">
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+<body
+    class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased transition-colors duration-200 pb-24">
+    <nav
+        class="sticky top-0 z-50 bg-white/80 dark:bg-slate-800/90 backdrop-blur border-b border-gray-200 dark:border-slate-700">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex h-16 items-center justify-between">
                 <a href="index.html" class="flex items-center gap-3">
@@ -40,8 +43,16 @@
                 </a>
                 <ul class="flex items-center gap-3 text-sm font-medium">
                     <li>
+                        <button id="theme-toggle"
+                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-3 py-2 text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-50 dark:hover:bg-slate-600 transition">
+                            <i class="fa-solid fa-sun dark:hidden"></i>
+                            <i class="fa-solid fa-moon hidden dark:inline"></i>
+                            <span class="sr-only">Toggle theme</span>
+                        </button>
+                    </li>
+                    <li>
                         <a href="manage.html"
-                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-gray-700 shadow-sm hover:text-laravel hover:border-laravel/40 transition">
+                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-2 text-gray-700 dark:text-gray-200 shadow-sm hover:text-laravel hover:border-laravel/40 transition">
                             <i class="fa-solid fa-gear"></i>
                             Manage Gigs
                         </a>
@@ -49,7 +60,7 @@
                     <li>
                         <form action="index.html">
                             <button
-                                class="inline-flex items-center gap-2 rounded-full bg-gray-100 px-4 py-2 text-gray-700 shadow-sm hover:bg-gray-200 transition">
+                                class="inline-flex items-center gap-2 rounded-full bg-gray-100 dark:bg-slate-700 px-4 py-2 text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-200 dark:hover:bg-slate-600 transition">
                                 <i class="fa-solid fa-door-closed"></i>
                                 Logout
                             </button>
@@ -62,107 +73,117 @@
 
     <main>
         <div class="max-w-2xl mx-auto px-4 py-8">
-            <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+            <div
+                class="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-8 shadow-sm">
                 <header class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-2">Edit Gig</h2>
-                    <p class="text-gray-600">Edit: Senior Developer</p>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Edit Gig</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Edit: Senior Developer</p>
                 </header>
 
                 <form action="">
-                    <!-- Company Name -->
                     <div class="mb-6">
-                        <label for="company" class="block text-sm font-medium text-gray-700 mb-2">Company Name</label>
+                        <label for="company"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company Name</label>
                         <input type="text"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="company" value="Acme Corp" />
                     </div>
-
-                    <!-- Job Title -->
                     <div class="mb-6">
-                        <label for="title" class="block text-sm font-medium text-gray-700 mb-2">Job Title</label>
+                        <label for="title" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Job
+                            Title</label>
                         <input type="text"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="title" placeholder="Example: Senior Laravel Developer"
                             value="Senior Laravel Developer" />
                     </div>
-
-                    <!-- Job Location -->
                     <div class="mb-6">
-                        <label for="location" class="block text-sm font-medium text-gray-700 mb-2">Job Location</label>
+                        <label for="location"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Job Location</label>
                         <input type="text"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="location" placeholder="Example: Remote, Boston MA, etc" value="Boston, MA" />
                     </div>
-
-                    <!-- Contact Email -->
                     <div class="mb-6">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Contact Email</label>
+                        <label for="email"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Contact
+                            Email</label>
                         <input type="email"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="email" value="contact@acmecorp.com" />
                     </div>
-
-                    <!-- Website/Application URL -->
                     <div class="mb-6">
-                        <label for="website" class="block text-sm font-medium text-gray-700 mb-2">
-                            Website/Application URL
-                        </label>
+                        <label for="website"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Website/Application
+                            URL</label>
                         <input type="url"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="website" value="https://acmecorp.com" />
                     </div>
-
-                    <!-- Tags -->
                     <div class="mb-6">
-                        <label for="tags" class="block text-sm font-medium text-gray-700 mb-2">
-                            Tags (Comma Separated)
-                        </label>
+                        <label for="tags" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Tags
+                            (Comma Separated)</label>
                         <input type="text"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="tags" placeholder="Example: Laravel, Backend, Postgres, etc"
                             value="Laravel, Backend, Postgres" />
                     </div>
-
-                    <!-- Company Logo -->
                     <div class="mb-6">
-                        <label for="logo" class="block text-sm font-medium text-gray-700 mb-2">
-                            Company Logo
-                        </label>
+                        <label for="logo"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company Logo</label>
                         <input type="file"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-laravel file:text-white hover:file:bg-red-600"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-laravel file:text-white hover:file:bg-red-600"
                             name="logo" />
                     </div>
-
-                    <!-- Job Description -->
                     <div class="mb-8">
-                        <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
-                            Job Description
-                        </label>
+                        <label for="description"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Job
+                            Description</label>
                         <textarea
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition resize-none"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition resize-none"
                             name="description" rows="10"
                             placeholder="Include tasks, requirements, salary, etc">Lorem ipsum dolor sit amet consectetur adipisicing elit. Animi ipsam quae repellat adipisci quas id? Optio saepe, maxime tempora tenetur iste ratione necessitatibus. Corrupti eveniet distinctio quaerat voluptas itaque sequi molestias assumenda fugiat minus in dicta perferendis, autem velit nihil, at, atque a placeat voluptates? Culpa quia vel laborum nemo.</textarea>
                     </div>
-
                     <div class="flex items-center gap-4">
                         <button
                             class="inline-flex items-center gap-2 rounded-lg bg-laravel px-6 py-3 text-white font-medium shadow-sm hover:bg-red-600 transition">
                             <i class="fa-solid fa-save"></i>
                             Update Gig
                         </button>
-
-                        <a href="manage.html" class="text-gray-600 hover:text-gray-900 transition">Back</a>
+                        <a href="manage.html"
+                            class="text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition">Back</a>
                     </div>
                 </form>
             </div>
         </div>
     </main>
 
-    <footer class="mt-16 border-t bg-white">
+    <footer
+        class="fixed bottom-0 left-0 w-full border-t border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800">
         <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-center">
-            <p class="text-sm text-gray-600">Copyright &copy; 2022, All Rights reserved</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Copyright &copy; 2022, All Rights reserved</p>
         </div>
     </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', savedTheme === 'dark');
+        updateThemeIcon();
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            updateThemeIcon();
+        });
+        function updateThemeIcon() {
+            const isDark = html.classList.contains('dark');
+            const sunIcon = themeToggle.querySelector('.fa-sun');
+            const moonIcon = themeToggle.querySelector('.fa-moon');
+            if (isDark) { sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); }
+            else { sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); }
+        }
+    </script>
 </body>
 
 </html>

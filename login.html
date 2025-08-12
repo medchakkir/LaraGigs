@@ -12,6 +12,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
@@ -30,8 +31,10 @@
     <title>LaraGigs | Find Laravel Jobs & Projects</title>
 </head>
 
-<body class="bg-gray-50 text-gray-800 antialiased">
-    <nav class="sticky top-0 z-50 bg-white/80 backdrop-blur border-b border-gray-200">
+<body
+    class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased transition-colors duration-200 pb-24">
+    <nav
+        class="sticky top-0 z-50 bg-white/80 dark:bg-slate-800/90 backdrop-blur border-b border-gray-200 dark:border-slate-700">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex h-16 items-center justify-between">
                 <a href="index.html" class="flex items-center gap-3">
@@ -40,8 +43,16 @@
                 </a>
                 <ul class="flex items-center gap-3 text-sm font-medium">
                     <li>
+                        <button id="theme-toggle"
+                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-3 py-2 text-gray-700 dark:text-gray-200 shadow-sm hover:bg-gray-50 dark:hover:bg-slate-600 transition">
+                            <i class="fa-solid fa-sun dark:hidden"></i>
+                            <i class="fa-solid fa-moon hidden dark:inline"></i>
+                            <span class="sr-only">Toggle theme</span>
+                        </button>
+                    </li>
+                    <li>
                         <a href="register.html"
-                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-gray-700 shadow-sm hover:text-laravel hover:border-laravel/40 transition">
+                            class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-2 text-gray-700 dark:text-gray-200 shadow-sm hover:text-laravel hover:border-laravel/40 transition">
                             <i class="fa-solid fa-user-plus"></i>
                             Register
                         </a>
@@ -53,27 +64,28 @@
 
     <main>
         <div class="max-w-md mx-auto px-4 py-8">
-            <div class="bg-white border border-gray-100 rounded-2xl p-8 shadow-sm">
+            <div
+                class="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-8 shadow-sm">
                 <header class="text-center mb-8">
-                    <h2 class="text-3xl font-bold text-gray-900 mb-2">Login</h2>
-                    <p class="text-gray-600">Log into your account to post a gig</p>
+                    <h2 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">Login</h2>
+                    <p class="text-gray-600 dark:text-gray-400">Log into your account to post a gig</p>
                 </header>
 
                 <form action="">
                     <div class="mb-6">
-                        <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                        <label for="email"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Email</label>
                         <input type="email"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="email" />
                     </div>
-
                     <div class="mb-8">
-                        <label for="password" class="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                        <label for="password"
+                            class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Password</label>
                         <input type="password"
-                            class="w-full rounded-lg border border-gray-200 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
+                            class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition"
                             name="password" />
                     </div>
-
                     <div class="flex items-center gap-4">
                         <button
                             class="w-full inline-flex items-center justify-center gap-2 rounded-lg bg-laravel px-6 py-3 text-white font-medium shadow-sm hover:bg-red-600 transition">
@@ -81,24 +93,42 @@
                             Sign In
                         </button>
                     </div>
-
                     <div class="mt-6 text-center">
-                        <p class="text-sm text-gray-600">
-                            No account?
-                            <a href="register.html"
-                                class="text-laravel hover:text-red-600 font-medium transition">Register</a>
-                        </p>
+                        <p class="text-sm text-gray-600 dark:text-gray-400">No account? <a href="register.html"
+                                class="text-laravel hover:text-red-600 font-medium transition">Register</a></p>
                     </div>
                 </form>
             </div>
         </div>
     </main>
 
-    <footer class="mt-16 border-t bg-white">
+    <footer
+        class="fixed bottom-0 left-0 w-full border-t border-gray-200 dark:border-slate-700 bg-white dark:bg-slate-800">
         <div class="max-w-6xl mx-auto px-4 h-20 flex items-center justify-center">
-            <p class="text-sm text-gray-600">Copyright &copy; 2022, All Rights reserved</p>
+            <p class="text-sm text-gray-600 dark:text-gray-400">Copyright &copy; 2022, All Rights reserved</p>
         </div>
     </footer>
+
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        html.classList.toggle('dark', savedTheme === 'dark');
+        updateThemeIcon();
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            const currentTheme = html.classList.contains('dark') ? 'dark' : 'light';
+            localStorage.setItem('theme', currentTheme);
+            updateThemeIcon();
+        });
+        function updateThemeIcon() {
+            const isDark = html.classList.contains('dark');
+            const sunIcon = themeToggle.querySelector('.fa-sun');
+            const moonIcon = themeToggle.querySelector('.fa-moon');
+            if (isDark) { sunIcon.classList.add('hidden'); moonIcon.classList.remove('hidden'); }
+            else { sunIcon.classList.remove('hidden'); moonIcon.classList.add('hidden'); }
+        }
+    </script>
 </body>
 
 </html>
