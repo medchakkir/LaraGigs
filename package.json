@@ -1,4 +1,5 @@
 {
+    "name": "laragigs",
     "$schema": "https://json.schemastore.org/package.json",
     "private": true,
     "type": "module",
