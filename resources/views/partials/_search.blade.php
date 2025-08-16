@@ -1,4 +1,4 @@
-<form action="" class="relative z-20 -mt-8">
+<form action="/" class="relative z-20 -mt-8">
     <div class="max-w-3xl mx-auto px-4">
         <div class="relative rounded-2xl bg-white dark:bg-slate-800 ring-1 ring-gray-100 dark:ring-slate-700 shadow-lg">
             <div class="absolute top-4 left-4">

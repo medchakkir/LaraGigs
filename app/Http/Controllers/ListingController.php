@@ -7,10 +7,12 @@ use Illuminate\Http\Request;
 
 class ListingController extends Controller
 {
-    // Display all listings
+    // Display the 6 latest listings
     public function index()
     {
-        return view('listings.index', ['listings' => Listing::all()]);
+        return view('listings.index', [
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->take(6)->get()
+        ]);
     }
 
     // Display a single listing
