@@ -12,23 +12,16 @@
             </a>
         </div>
 
-        <div class="bg-white dark:bg-slate-800 border border-gray-100 dark:border-slate-700 rounded-2xl p-8 shadow-sm">
+        <x-card>
             <div class="flex flex-col md:flex-row gap-6 mb-8">
                 <img class="w-32 h-32 object-contain rounded-xl shadow-sm bg-gray-50 dark:bg-slate-700"
                     src="{{ asset('images/no-image.png') }}" alt="{{ $listing->company }}" />
                 <div class="flex-1">
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ $listing->title }}</h1>
                     <div class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-4">{{ $listing->company }}</div>
-                    <div class="flex flex-wrap gap-2 mb-4">
-                        <span
-                            class="inline-flex items-center rounded-full bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">Laravel</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">API</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">Backend</span>
-                        <span
-                            class="inline-flex items-center rounded-full bg-gray-100 dark:bg-slate-700 text-gray-700 dark:text-gray-300 px-3 py-1 text-sm font-medium">Vue</span>
-                    </div>
+
+                    <x-listing-tags :tagsCsv="$listing->tags" class="flex-wrap gap-2 mb-4" />
+
                     <div class="flex items-center gap-2 text-gray-500 dark:text-gray-400">
                         <i class="fa-solid fa-location-dot"></i>
                         <span>{{ $listing->location }}</span>
@@ -56,6 +49,6 @@
                     </a>
                 </div>
             </div>
-        </div>
+        </x-card>
     </div>
 @endsection
