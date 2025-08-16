@@ -1,7 +1,4 @@
-@extends('layout')
-
-@section('content')
-    {{-- @include('partials._search') --}}
+<x-layout>
 
     <div class="max-w-4xl mx-auto px-4 py-8">
         <div class="mb-6">
@@ -18,7 +15,8 @@
                     src="{{ asset('images/no-image.png') }}" alt="{{ $listing->company }}" />
                 <div class="flex-1">
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ $listing->title }}</h1>
-                    <div class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-4">{{ $listing->company }}</div>
+                    <div class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-4">{{ $listing->company }}
+                    </div>
 
                     <x-listing-tags :tagsCsv="$listing->tags" class="flex-wrap gap-2 mb-4" />
 
@@ -51,4 +49,4 @@
             </div>
         </x-card>
     </div>
-@endsection
+</x-layout>

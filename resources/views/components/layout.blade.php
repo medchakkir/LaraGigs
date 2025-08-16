@@ -71,8 +71,7 @@
 
     <main class="flex-1">
 
-        {{-- View Content --}}
-        @yield('content')
+        {{ $slot }}
 
     </main>
 
