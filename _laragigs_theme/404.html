@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" href="images/favicon.ico" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        laravel: "#ef3b2d",
+                    },
+                },
+            },
+        };
+    </script>
+    <title>404 | Page Not Found</title>
+</head>
+
+<body class="bg-gray-50 dark:bg-slate-900 text-gray-800 dark:text-gray-100 antialiased min-h-screen flex flex-col">
+    <main class="flex-1 flex items-center justify-center px-6">
+        <div class="text-center space-y-6">
+            <h1 class="text-7xl md:text-8xl font-extrabold tracking-tight text-laravel">404</h1>
+            <p class="text-lg md:text-xl text-gray-600 dark:text-gray-300">Page Not Found</p>
+            <div>
+                <a href="index.html"
+                    class="inline-flex items-center gap-2 rounded-full bg-laravel px-5 py-2.5 text-white shadow hover:bg-red-600 transition">
+                    <i class="fa-solid fa-arrow-left"></i>
+                    Back to Homepage
+                </a>
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
