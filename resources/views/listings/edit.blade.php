@@ -123,9 +123,7 @@
                     </label>
                     <textarea
                         class="focus:ring-laravel w-full resize-none rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="description" rows="10" placeholder="Include tasks, requirements, salary, etc">
-                    {{ $listing->description }}
-                    </textarea>
+                        name="description" rows="10" placeholder="Include tasks, requirements, salary, etc">{{ $listing->description }}</textarea>
                     @error('description')
                         <p class="mt-2 text-sm text-red-600 dark:text-red-400">
                             {{ $message }}

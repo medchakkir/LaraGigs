@@ -1,61 +1,158 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+## LaraGigs
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Job listings platform built with Laravel 12, Blade templating, and TailwindCSS. It enables developers and employers to browse, post, and manage tech jobs with powerful search and filtering.
 
-## About Laravel
+![Homepage](public/images/home.png)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 1. Project Overview
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+LaraGigs is a full‑stack Laravel application that showcases modern Laravel conventions, reusable Blade components, clean routing/controllers, and TailwindCSS styling. It includes authentication, CRUD for job listings, search by tags/keywords/location, pagination, and a custom 404 page.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 2. Features
 
-## Learning Laravel
+- **Browse job listings**: View a paginated feed of the latest jobs
+- **Advanced search**: Filter by tags, keywords, and location
+- **User authentication**: Register, login, logout
+- **Employer dashboard**: Create, edit, and delete your listings
+- **Pagination**: Clean pagination UI for long lists
+- **Custom 404**: Friendly, branded not‑found page
+- **Reusable UI**: Blade layouts and components for consistent design
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 3. Tech Stack
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Backend**: Laravel 12, PHP 8+
+- **Frontend**: Blade templates, TailwindCSS
+- **Database**: MySQL (or SQLite)
+- **Build tooling**: Laravel Vite (optional for asset builds)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 4. Installation
 
-## Laravel Sponsors
+Prerequisites:
+- PHP 8+
+- Composer
+- MySQL or SQLite
+- Node.js + npm (optional, for building frontend assets)
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Steps:
+1. Clone the repository
 
-### Premium Partners
+```bash
+git clone <your-repo-url> laragigs
+cd laragigs
+```
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+2. Install PHP dependencies
 
-## Contributing
+```bash
+composer install
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+3. Configure environment
 
-## Code of Conduct
+```bash
+cp .env.example .env
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Update `.env` with your database settings. Examples:
 
-## Security Vulnerabilities
+MySQL
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```env
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laragigs
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-## License
+SQLite
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```env
+DB_CONNECTION=sqlite
+DB_DATABASE=database/database.sqlite
+```
+
+Then create the file if using SQLite:
+
+```bash
+mkdir -p database && type NUL > database\database.sqlite
+```
+
+4. Generate the application key
+
+```bash
+php artisan key:generate
+```
+
+5. Run database migrations
+
+```bash
+php artisan migrate
+```
+
+6. (Optional) Seed sample data
+
+```bash
+php artisan db:seed
+```
+
+7. (Optional) Install/build frontend assets
+
+```bash
+npm install
+npm run dev
+```
+
+8. Start the development server
+
+```bash
+php artisan serve
+```
+
+The app will be available at `http://127.0.0.1:8000`.
+
+### 5. Usage
+
+- **Register**: Navigate to `/register`, create an account, and sign in.
+- **Post a job**: After logging in, go to "Create Listing" (or `/listings/create`), fill in details such as title, company, location, tags (comma‑separated), and description, then submit.
+- **Manage listings**: Visit "Manage Listings" to edit or delete your own postings.
+- **Edit a job**: From the manage screen or a listing page, click "Edit", update fields, and save.
+- **Search jobs**:
+  - Use the search bar to filter by keywords and location
+  - Click on tag chips to filter by tag
+  - Combine keywords and tags for more precise results
+
+### 7. Contributing
+
+Contributions are welcome!
+
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/your-feature`
+3. Commit your changes: `git commit -m "feat: add your feature"`
+4. Push to your fork: `git push origin feature/your-feature`
+5. Open a Pull Request
+
+Please follow PSR standards and include tests where applicable.
+
+### 8. License
+
+This project is licensed under the **MIT License**. See `LICENSE` for details.
+
+### Folder Structure Overview
+
+Key folders in this project:
+
+- `app/Http/Controllers/`: Application controllers (e.g., listings, users)
+- `app/Models/`: Eloquent models (e.g., `Listing`, `User`)
+- `routes/web.php`: Web routes for pages and actions
+- `resources/views/`: Blade templates
+  - `resources/views/components/`: Reusable Blade components (cards, tags, layout)
+  - `resources/views/listings/`: Listing pages (index, show, create, edit, manage)
+  - `resources/views/users/`: Auth views (register, login)
+- `resources/css/` and `resources/js/`: Frontend assets (TailwindCSS, app JS)
+- `public/`: Public assets served by the web server (images, compiled assets)
+- `database/migrations/`: Database schema definitions
+- `database/seeders/`: Database seeders for sample data
+
+If you use Vite, compiled assets will be output per your Vite config.
