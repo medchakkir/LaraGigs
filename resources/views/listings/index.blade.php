@@ -1,8 +1,10 @@
 <x-layout>
-    @include('partials._hero')
-    @include('partials._search')
+    @include("partials._hero")
+    @include("partials._search")
 
-    <div class="max-w-6xl mx-auto px-4 mt-10 grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+    <div
+        class="mx-auto mt-10 mb-16 grid max-w-6xl grid-cols-1 gap-6 px-4 sm:grid-cols-2"
+    >
         @unless (count($listings) == 0)
             @foreach ($listings as $listing)
                 <x-listing-card :listing="$listing" />
@@ -13,12 +15,14 @@
     </div>
 
     {{-- Pagination --}}
-    {{ $listings->links('vendor.pagination.custom') }}
+    {{ $listings->links("vendor.pagination.custom") }}
 
-    @push('fab')
+    @push("fab")
         {{-- Floating Action Button --}}
-        <a href="/listings/create"
-            class="fixed bottom-6 right-6 inline-flex items-center gap-2 rounded-full bg-laravel px-5 py-3 text-white shadow-lg hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-white/60 transition-all duration-200">
+        <a
+            href="/listings/create"
+            class="bg-laravel fixed right-6 bottom-6 inline-flex items-center gap-2 rounded-full px-5 py-3 text-white shadow-lg transition-all duration-200 hover:bg-red-600 focus:ring-2 focus:ring-white/60 focus:outline-none"
+        >
             <i class="fa-solid fa-plus"></i>
             Post Job
         </a>

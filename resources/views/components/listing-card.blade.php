@@ -1,21 +1,36 @@
-@props(['listing'])
+@props([
+    "listing",
+])
 
-<x-card class="group p-6 hover:shadow-md hover:-translate-y-0.5 transition">
+<x-card class="group p-6 transition hover:-translate-y-0.5 hover:shadow-md">
     <div class="flex gap-4">
-        <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm"
-            src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}"
-            alt="{{ $listing->title }}" />
+        <img
+            class="hidden h-28 w-28 rounded-xl object-contain shadow-sm md:block"
+            src="{{ $listing->logo ? asset("storage/" . $listing->logo) : asset("images/no-image.png") }}"
+            alt="{{ $listing->title }}"
+        />
         <div class="flex-1">
-            <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-laravel transition">
-                <a href="/listings/{{ $listing->id }}">{{ $listing->title }}</a>
+            <h3
+                class="group-hover:text-laravel text-xl font-semibold text-gray-900 transition dark:text-gray-100"
+            >
+                <a href="/listings/{{ $listing->id }}">
+                    {{ $listing->title }}
+                </a>
             </h3>
-            <div class="text-base font-semibold text-gray-700 dark:text-gray-300 mb-3">{{ $listing->company }}
+            <div
+                class="mb-3 text-base font-semibold text-gray-700 dark:text-gray-300"
+            >
+                {{ $listing->company }}
             </div>
 
-            <x-listing-tags :tagsCsv="$listing->tags" class="flex-wrap gap-2" />
+            <x-listing-tags
+                :tagsCsv="$listing->tags"
+                class="flex-wrap gap-2"
+            />
 
-            <div class="text-sm text-gray-500 dark:text-gray-400 mt-4">
-                <i class="fa-solid fa-location-dot"></i> {{ $listing->location }}
+            <div class="mt-4 text-sm text-gray-500 dark:text-gray-400">
+                <i class="fa-solid fa-location-dot"></i>
+                {{ $listing->location }}
             </div>
         </div>
     </div>
