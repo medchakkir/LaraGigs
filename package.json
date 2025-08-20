@@ -6,7 +6,7 @@
     "scripts": {
         "build": "vite build",
         "dev": "vite",
-        "format": "npx prettier --write resources/views/**/*.blade.php"
+        "format": "npx blade-formatter --write resources/views/**/*.blade.php"
     },
     "devDependencies": {
         "@tailwindcss/vite": "^4.0.0",

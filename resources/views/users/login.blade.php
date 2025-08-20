@@ -10,7 +10,7 @@
                 </p>
             </header>
 
-            <form method="POST" action="/login">
+            <form method="POST" action="/users/authenticate">
                 @csrf
                 <div class="mb-6">
                     <label for="email" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">

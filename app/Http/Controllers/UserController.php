@@ -33,7 +33,7 @@ class UserController extends Controller
         // Log the user in
         auth()->login($user);
 
-        return redirect('/')->with('success', 'User registered successfully.');
+        return redirect('/')->with('message', 'User registered successfully.');
     }
 
     // Show login form
@@ -52,7 +52,7 @@ class UserController extends Controller
 
         if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect('/')->with('success', 'Logged in successfully.');
+            return redirect('/')->with('message', 'Logged in successfully.');
         }
 
         return back()->withErrors([
@@ -68,6 +68,6 @@ class UserController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect('/')->with('success', 'User logged out successfully.');
+        return redirect('/')->with('message', 'User logged out successfully.');
     }
 }
