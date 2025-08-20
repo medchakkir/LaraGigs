@@ -36,6 +36,30 @@ class UserController extends Controller
         return redirect('/')->with('success', 'User registered successfully.');
     }
 
+    // Show login form
+    public function login()
+    {
+        return view('users.login');
+    }
+
+    // Login user
+    public function authenticate(Request $request)
+    {
+        $credentials = $request->validate([
+            'email' => 'required|email',
+            'password' => 'required|min:6',
+        ]);
+
+        if (auth()->attempt($credentials)) {
+            $request->session()->regenerate();
+            return redirect('/')->with('success', 'Logged in successfully.');
+        }
+
+        return back()->withErrors([
+            'email' => 'The provided credentials do not match our records.',
+        ])->onlyInput('email');
+    }
+
     // Logout user
     public function destroy(Request $request)
     {
