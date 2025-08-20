@@ -1,5 +1,5 @@
 <section class="from-laravel relative overflow-hidden bg-gradient-to-br to-rose-600">
-    <div class="absolute inset-0 bg-center bg-no-repeat opacity-10"
+    <div class="pointer-events-none absolute inset-0 bg-center bg-no-repeat opacity-10"
         style="background-image: url('{{ asset('images/laravel-logo.png') }}')"></div>
     <div class="mx-auto max-w-6xl px-4">
         <div class="flex h-[380px] flex-col items-center justify-center space-y-4 text-center">
