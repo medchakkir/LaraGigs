@@ -10,7 +10,7 @@
                 Find or post Laravel jobs & projects
             </p>
             <div class="pt-2">
-                <a href="register.html"
+                <a href="/register"
                     class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 text-laravel font-semibold shadow-lg hover:shadow-xl hover:bg-gray-100 transition">
                     <i class="fa-solid fa-bullhorn"></i>
                     Sign Up to List a Gig

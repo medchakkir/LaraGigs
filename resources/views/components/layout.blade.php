@@ -54,8 +54,27 @@
                             <span class="sr-only">Toggle theme</span>
                         </button>
                     </li>
+                    @auth
+                        <li>
+                            <a href="/listings/manage"
+                                class="hover:text-laravel hover:border-laravel/40 inline-flex items-center gap-2 rounded-full border border-gray-200 bg-white px-4 py-2 text-gray-700 shadow-sm transition dark:border-slate-600 dark:bg-slate-700 dark:text-gray-200">
+                                <i class="fa-solid fa-gear"></i>
+                                Manage Gigs
+                            </a>
+                        </li>
+                        <li>
+                            <form method="POST" action="/logout">
+                                @csrf
+                                <button
+                                    class="bg-laravel inline-flex items-center gap-2 rounded-full px-4 py-2 shadow-sm transition hover:bg-gray-200 dark:hover:bg-slate-600">
+                                    <i class="fa-solid fa-door-closed"></i>
+                                    Logout
+                                </button>
+                            </form>
+                        </li>
+                    @else
                     <li>
-                        <a href="register.html"
+                        <a href="/register"
                             class="inline-flex items-center gap-2 rounded-full border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-2 text-gray-700 dark:text-gray-200 shadow-sm hover:text-laravel hover:border-laravel/40 transition">
                             <i class="fa-solid fa-user-plus"></i>
                             Register
@@ -68,6 +87,7 @@
                             Login
                         </a>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </div>
