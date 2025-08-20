@@ -49,5 +49,19 @@
                 </div>
             </div>
         </x-card>
+
+        <x-card class="mt-4 p-2 flex space-x-6">
+            <a href="/listings/{{ $listing->id }}/edit" class="flex items-center gap-2">
+                <i class="fa-solid fa-pencil"></i> Edit
+            </a>
+            <form method="POST" action="/listings/{{ $listing->id }}">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="flex items-center gap-2 text-red-600 hover:text-red-500 transition">
+                    <i class="fa-solid fa-trash"></i> Delete
+                </button>
+            </form>
+        </x-card>
+
     </div>
 </x-layout>

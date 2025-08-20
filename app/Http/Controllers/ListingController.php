@@ -32,13 +32,13 @@ class ListingController extends Controller
     public function store(Request $request)
     {
         $formFields = $request->validate([
-            'title' => 'required|max:255',
+            'title' => ['required', 'max:255'],
             'company' => ['required', 'max:255', Rule::unique('listings', 'company')],
-            'location' => 'required|max:255',
+            'location' => ['required', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
-            'website' => 'required|url|max:255',
-            'tags' => 'required|string|max:255',
-            'description' => 'required|max:2000',
+            'website' => ['required', 'url', 'max:255'],
+            'tags' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'max:2000'],
         ]);
 
         if ($request->hasFile('logo')) {
@@ -50,5 +50,42 @@ class ListingController extends Controller
 
         // Redirect with success message
         return redirect('/')->with('message', 'Listing created successfully.');
+    }
+
+    // Show edit form
+    public function edit(Listing $listing)
+    {
+        return view('listings.edit', ['listing' => $listing]);
+    }
+
+    // Update listing
+    public function update(Request $request, Listing $listing)
+    {
+        $formFields = $request->validate([
+            'title' => ['required', 'max:255'],
+            'company' => ['required', 'max:255'],
+            'location' => ['required', 'max:255'],
+            'email' => ['required', 'email', 'max:255'],
+            'website' => ['required', 'url', 'max:255'],
+            'tags' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'max:2000'],
+        ]);
+
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
+
+        // Update listing
+        $listing->update($formFields);
+
+        // Redirect with success message
+        return back()->with('message', 'Listing updated successfully.');
+    }
+
+    // Delete listing
+    public function destroy(Listing $listing)
+    {
+        $listing->delete();
+        return redirect('/')->with('message', 'Listing deleted successfully.');
     }
 }
