@@ -1,6 +1,7 @@
-## LaraGigs
-
-Job listings platform built with Laravel 12, Blade templating, and TailwindCSS. It enables developers and employers to browse, post, and manage tech jobs with powerful search and filtering.
+<h1 align="center">LaraGigs</h1>
+<p align="center">
+  A modern job listings platform built with <b>Laravel 12</b>, <b>Blade</b>, and <b>TailwindCSS</b>.
+</p>
 
 ![Homepage](public/images/home.png)
 
