@@ -35,11 +35,15 @@ class ListingController extends Controller
             'title' => 'required|max:255',
             'company' => ['required', 'max:255', Rule::unique('listings', 'company')],
             'location' => 'required|max:255',
-            'website' => 'required|url|max:255',
             'email' => ['required', 'email', 'max:255'],
+            'website' => 'required|url|max:255',
             'tags' => 'required|string|max:255',
             'description' => 'required|max:2000',
         ]);
+
+        if ($request->hasFile('logo')) {
+            $formFields['logo'] = $request->file('logo')->store('logos', 'public');
+        }
 
         // Create listing
         Listing::create($formFields);

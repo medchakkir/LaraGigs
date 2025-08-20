@@ -6,7 +6,7 @@
                 <p class="text-gray-600 dark:text-gray-400">Post a gig to find a developer</p>
             </header>
 
-            <form method="POST" action="/listings/">
+            <form method="POST" action="/listings" enctype="multipart/form-data">
                 @csrf
                 <div class="mb-6">
                     <label for="company" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company
@@ -77,13 +77,16 @@
                     @enderror
                 </div>
 
-                {{-- <div class="mb-6">
+                <div class="mb-6">
                     <label for="logo"
                         class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Company Logo</label>
                     <input type="file"
                         class="w-full rounded-lg border border-gray-200 dark:border-slate-600 bg-white dark:bg-slate-700 px-4 py-3 text-gray-900 dark:text-gray-100 focus:outline-none focus:ring-2 focus:ring-laravel focus:border-transparent transition file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-medium file:bg-laravel file:text-white hover:file:bg-red-600"
                         name="logo" />
-                </div> --}}
+                    @error('logo')
+                        <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+                    @enderror
+                </div>
 
                 <div class="mb-8">
                     <label for="description" class="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">Job

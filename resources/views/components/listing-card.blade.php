@@ -3,7 +3,8 @@
 <x-card class="group p-6 hover:shadow-md hover:-translate-y-0.5 transition">
     <div class="flex gap-4">
         <img class="hidden md:block w-28 h-28 object-contain rounded-xl shadow-sm"
-            src="{{ asset('images/no-image.png') }}" alt="{{ $listing->title }}" />
+            src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}"
+            alt="{{ $listing->title }}" />
         <div class="flex-1">
             <h3 class="text-xl font-semibold text-gray-900 dark:text-gray-100 group-hover:text-laravel transition">
                 <a href="/listings/{{ $listing->id }}">{{ $listing->title }}</a>

@@ -12,7 +12,8 @@
         <x-card>
             <div class="flex flex-col md:flex-row gap-6 mb-8">
                 <img class="w-32 h-32 object-contain rounded-xl shadow-sm bg-gray-50 dark:bg-slate-700"
-                    src="{{ asset('images/no-image.png') }}" alt="{{ $listing->company }}" />
+                    src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}"
+                    alt="{{ $listing->title }}" />
                 <div class="flex-1">
                     <h1 class="text-3xl font-bold text-gray-900 dark:text-gray-100 mb-2">{{ $listing->title }}</h1>
                     <div class="text-xl font-semibold text-gray-700 dark:text-gray-300 mb-4">{{ $listing->company }}
