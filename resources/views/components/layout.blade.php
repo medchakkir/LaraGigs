@@ -66,7 +66,7 @@
                             <form method="POST" action="/logout">
                                 @csrf
                                 <button
-                                    class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-laravel text-white shadow-sm transition hover:bg-red-600">
+                                    class="bg-laravel inline-flex items-center gap-2 rounded-full px-4 py-2 text-white shadow-sm transition hover:bg-red-600">
                                     <i class="fa-solid fa-door-closed"></i>
                                     Logout
                                 </button>
@@ -82,7 +82,7 @@
                         </li>
                         <li>
                             <a href="/login"
-                                class="inline-flex items-center gap-2 rounded-full px-4 py-2 bg-laravel text-white shadow-sm transition hover:bg-red-600">
+                                class="bg-laravel inline-flex items-center gap-2 rounded-full px-4 py-2 text-white shadow-sm transition hover:bg-red-600">
                                 <i class="fa-solid fa-arrow-right-to-bracket"></i>
                                 Login
                             </a>

@@ -1,4 +1,4 @@
-<section class="from-laravel relative overflow-hidden bg-gradient-to-br to-rose-600">
+<section class="relative overflow-hidden bg-gradient-to-br from-red-500 to-rose-600">
     <div class="pointer-events-none absolute inset-0 bg-center bg-no-repeat opacity-10"
         style="background-image: url('{{ asset('images/laravel-logo.png') }}')"></div>
     <div class="mx-auto max-w-6xl px-4">
@@ -11,11 +11,19 @@
                 Find or post Laravel jobs & projects
             </p>
             <div class="pt-2">
-                <a href="/register"
-                    class="text-laravel inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-semibold shadow-lg transition hover:bg-gray-100 hover:shadow-xl">
-                    <i class="fa-solid fa-bullhorn"></i>
-                    Sign Up to List a Gig
-                </a>
+                @auth
+                    <a href="/listings/create"
+                        class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-semibold text-red-500 shadow-lg transition hover:bg-gray-100 hover:shadow-xl">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        Post a Gig
+                    </a>
+                @else
+                    <a href="/register"
+                        class="inline-flex items-center gap-2 rounded-full bg-white px-5 py-2.5 font-semibold text-red-500 shadow-lg transition hover:bg-gray-100 hover:shadow-xl">
+                        <i class="fa-solid fa-bullhorn"></i>
+                        Sign up to post a gig
+                    </a>
+                @endauth
             </div>
         </div>
     </div>

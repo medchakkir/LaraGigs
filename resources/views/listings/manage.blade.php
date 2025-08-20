@@ -23,7 +23,7 @@
                                 <tr class="transition hover:bg-gray-50 dark:hover:bg-slate-800">
                                     <td class="px-6 py-4">
                                         <a href="view.html"
-                                            class="hover:text-red-500 text-lg font-medium text-gray-900 transition dark:text-gray-100">{{ $listing->title }}</a>
+                                            class="text-lg font-medium text-gray-900 transition hover:text-red-500 dark:text-gray-100">{{ $listing->title }}</a>
                                     </td>
                                     <td class="px-6 py-4">
                                         <div class="flex items-center gap-3">
