@@ -6,7 +6,7 @@
                     Register
                 </h1>
                 <p class="text-gray-600 dark:text-gray-400">
-                    Create an account to post gigs
+                    Create an account to post jobs
                 </p>
             </header>
 

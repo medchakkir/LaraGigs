@@ -1,4 +1,4 @@
-<h1 align="center">LaraGigs</h1>
+<h1 align="center">LaraJobs</h1>
 <p align="center">
   A modern job listings platform built with <b>Laravel 12</b>, <b>Blade</b>, and <b>TailwindCSS</b>.
 </p>
@@ -7,7 +7,7 @@
 
 ### 1. Project Overview
 
-LaraGigs is a full‑stack Laravel application that showcases modern Laravel conventions, reusable Blade components, clean routing/controllers, and TailwindCSS styling. It includes authentication, CRUD for job listings, search by tags/keywords/location, pagination, and a custom 404 page.
+LaraJobs is a full‑stack Laravel application that showcases modern Laravel conventions, reusable Blade components, clean routing/controllers, and TailwindCSS styling. It includes authentication, CRUD for job listings, search by tags/keywords/location, pagination, and a custom 404 page.
 
 ### 2. Features
 
@@ -38,8 +38,8 @@ Steps:
 1. Clone the repository
 
 ```bash
-git clone <your-repo-url> laragigs
-cd laragigs
+git clone <your-repo-url> larajobs
+cd larajobs
 ```
 
 2. Install PHP dependencies
@@ -62,7 +62,7 @@ MySQL
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=laragigs
+DB_DATABASE=larajobs
 DB_USERNAME=root
 DB_PASSWORD=
 ```
