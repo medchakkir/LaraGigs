@@ -1,27 +1,29 @@
 <x-layout>
-    <div class="mx-auto max-w-2xl px-4 py-8">
-        <div class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm dark:border-slate-700 dark:bg-slate-800">
+    <div class="mx-auto flex min-h-[calc(100vh-8rem)] w-full max-w-2xl items-center justify-center px-4 py-8">
+        <x-card class="w-full">
             <header class="mb-8 text-center">
-                <h2 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
-                    Edit Gig
-                </h2>
+                <h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
+                    Update Job Listing
+                </h1>
                 <p class="text-gray-600 dark:text-gray-400">
-                    Edit: {{ $listing->id }}
+                    Modify your job posting details
                 </p>
             </header>
 
-            <form method="POST" action="/listings/{{ $listing->id }}" enctype="multipart/form-data">
+            <form method="POST" action="/listings/{{ $listing->id }}" enctype="multipart/form-data" role="form"
+                aria-labelledby="edit-title">
                 @csrf
                 @method('PUT')
                 <div class="mb-6">
                     <label for="company" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Company Name
+                        Company Name <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="text"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="company" value="{{ $listing->company }}" />
+                    <input type="text" id="company"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="company" value="{{ $listing->company }}" required aria-describedby="company-error"
+                        aria-invalid="{{ $errors->has('company') ? 'true' : 'false' }}" />
                     @error('company')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="company-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -29,13 +31,15 @@
 
                 <div class="mb-6">
                     <label for="title" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Job Title
+                        Job Title <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="text"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="title" placeholder="Example: Senior Laravel Developer" value="{{ $listing->title }}" />
+                    <input type="text" id="title"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="title" placeholder="Example: Senior Laravel Developer" value="{{ $listing->title }}"
+                        required aria-describedby="title-error"
+                        aria-invalid="{{ $errors->has('title') ? 'true' : 'false' }}" />
                     @error('title')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="title-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -43,14 +47,15 @@
 
                 <div class="mb-6">
                     <label for="location" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Job Location
+                        Job Location <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="text"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="location" placeholder="Example: Remote, Boston MA, etc"
-                        value="{{ $listing->location }}" />
+                    <input type="text" id="location"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="location" placeholder="Example: Remote, Boston MA, etc" value="{{ $listing->location }}"
+                        required aria-describedby="location-error"
+                        aria-invalid="{{ $errors->has('location') ? 'true' : 'false' }}" />
                     @error('location')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="location-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -58,13 +63,14 @@
 
                 <div class="mb-6">
                     <label for="email" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Contact Email
+                        Contact Email <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="email"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="email" value="{{ $listing->email }}" />
+                    <input type="email" id="email"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="email" value="{{ $listing->email }}" required aria-describedby="email-error"
+                        aria-invalid="{{ $errors->has('email') ? 'true' : 'false' }}" />
                     @error('email')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="email-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -72,13 +78,14 @@
 
                 <div class="mb-6">
                     <label for="website" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Website/Application URL
+                        Company Website <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="url"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="website" value="{{ $listing->website }}" />
+                    <input type="url" id="website"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="website" value="{{ $listing->website }}" required aria-describedby="website-error"
+                        aria-invalid="{{ $errors->has('website') ? 'true' : 'false' }}" />
                     @error('website')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="website-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -86,14 +93,16 @@
 
                 <div class="mb-6">
                     <label for="tags" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Tags (Comma Separated)
+                        Skills & Technologies <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="text"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="tags" placeholder="Example: Laravel, Backend, Postgres, etc"
-                        value="{{ $listing->tags }}" />
+                    <input type="text" id="tags"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="tags" placeholder="Example: Laravel, Backend, PostgreSQL, etc"
+                        value="{{ $listing->tags }}" required aria-describedby="tags-error"
+                        aria-invalid="{{ $errors->has('tags') ? 'true' : 'false' }}" />
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Separate multiple skills with commas</p>
                     @error('tags')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="tags-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -103,15 +112,21 @@
                     <label for="logo" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
                         Company Logo
                     </label>
-                    <input type="file"
-                        class="focus:ring-laravel file:bg-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 transition file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-red-600 focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="logo" />
+                    <input type="file" id="logo"
+                        class="focus-ring file:bg-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 transition file:mr-4 file:rounded-full file:border-0 file:px-4 file:py-2 file:text-sm file:font-medium file:text-white hover:file:bg-red-600 focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="logo" accept="image/*" aria-describedby="logo-error"
+                        aria-invalid="{{ $errors->has('logo') ? 'true' : 'false' }}" />
 
-                    <img class="mt-4 h-32 w-32 rounded-xl bg-gray-50 object-contain shadow-sm dark:bg-slate-700"
-                        src="{{ $listing->logo ? asset('storage/' . $listing->logo) : asset('images/no-image.png') }}"
-                        alt="{{ $listing->title }}" />
+                    @if ($listing->logo)
+                        <div class="mt-4">
+                            <p class="mb-2 text-sm text-gray-600 dark:text-gray-400">Current logo:</p>
+                            <img class="h-32 w-32 rounded-xl bg-gray-50 object-contain shadow-sm dark:bg-slate-700"
+                                src="{{ asset('storage/' . $listing->logo) }}" alt="{{ $listing->company }} logo" />
+                        </div>
+                    @endif
+
                     @error('logo')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="logo-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -119,30 +134,34 @@
 
                 <div class="mb-8">
                     <label for="description" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Job Description
+                        Job Description <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <textarea
-                        class="focus:ring-laravel w-full resize-none rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="description" rows="10" placeholder="Include tasks, requirements, salary, etc">{{ $listing->description }}</textarea>
+                    <textarea id="description"
+                        class="focus-ring w-full resize-none rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="description" rows="10" placeholder="Describe the role, responsibilities, requirements, and benefits">{{ $listing->description }}</textarea>
+                    <p class="mt-1 text-xs text-gray-500 dark:text-gray-400">Include role details, requirements,
+                        responsibilities, and compensation information</p>
                     @error('description')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="description-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
                 </div>
 
                 <div class="flex items-center gap-4">
-                    <button
-                        class="bg-laravel inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white shadow-sm transition hover:bg-red-600">
-                        <i class="fa-solid fa-plus"></i>
-                        Edit Gig
+                    <button type="submit"
+                        class="focus-ring bg-laravel focus:ring-laravel inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-white shadow-sm transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                        aria-label="Save changes to the job listing">
+                        <i class="fa-solid fa-save" aria-hidden="true"></i>
+                        Update Listing
                     </button>
-                    <a href="/"
-                        class="text-gray-600 transition hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200">
-                        Back
+                    <a href="/listings/{{ $listing->id }}"
+                        class="focus-ring focus:ring-laravel rounded text-gray-600 transition hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:text-gray-400 dark:hover:text-gray-200"
+                        aria-label="Cancel editing and return to listing">
+                        Cancel
                     </a>
                 </div>
             </form>
-        </div>
+        </x-card>
     </div>
 </x-layout>

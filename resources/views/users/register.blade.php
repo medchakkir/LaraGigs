@@ -1,52 +1,55 @@
 <x-layout>
-    <div class="mx-auto w-full max-w-md px-4 py-8">
-        <x-card>
+    <div class="mx-auto flex min-h-[calc(100vh-8rem)] w-full max-w-md items-center justify-center px-4 py-8">
+        <x-card class="w-full">
             <header class="mb-8 text-center">
-                <h2 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
+                <h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">
                     Register
-                </h2>
+                </h1>
                 <p class="text-gray-600 dark:text-gray-400">
                     Create an account to post gigs
                 </p>
             </header>
 
-            <form method="POST" action="/users">
+            <form method="POST" action="/users" role="form" aria-labelledby="register-title">
                 @csrf
                 <div class="mb-6">
                     <label for="name" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Name
+                        Name <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="text"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="name" value="{{ old('name') }}" />
+                    <input type="text" id="name"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="name" value="{{ old('name') }}" required aria-describedby="name-error"
+                        aria-invalid="{{ $errors->has('name') ? 'true' : 'false' }}" />
                     @error('name')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="name-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
                 </div>
                 <div class="mb-6">
                     <label for="email" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Email
+                        Email <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="email"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="email" value="{{ old('email') }}" />
+                    <input type="email" id="email"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="email" value="{{ old('email') }}" required aria-describedby="email-error"
+                        aria-invalid="{{ $errors->has('email') ? 'true' : 'false' }}" />
                     @error('email')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="email-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
                 </div>
                 <div class="mb-6">
                     <label for="password" class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Password
+                        Password <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="password"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="password" value="{{ old('password') }}" />
+                    <input type="password" id="password"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="password" value="{{ old('password') }}" required aria-describedby="password-error"
+                        aria-invalid="{{ $errors->has('password') ? 'true' : 'false' }}" />
                     @error('password')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="password-error" class="mt-2 text-sm text-red-600 dark:text-red-400" role="alert">
                             {{ $message }}
                         </p>
                     @enderror
@@ -54,28 +57,34 @@
                 <div class="mb-8">
                     <label for="password_confirmation"
                         class="mb-2 block text-sm font-medium text-gray-700 dark:text-gray-300">
-                        Confirm Password
+                        Confirm Password <span class="text-red-500" aria-label="required">*</span>
                     </label>
-                    <input type="password"
-                        class="focus:ring-laravel w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
-                        name="password_confirmation" value="{{ old('password_confirmation') }}" />
+                    <input type="password" id="password_confirmation"
+                        class="focus-ring w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-gray-900 placeholder-gray-400 transition focus:border-transparent focus:outline-none focus:ring-2 dark:border-slate-600 dark:bg-slate-700 dark:text-gray-100"
+                        name="password_confirmation" value="{{ old('password_confirmation') }}" required
+                        aria-describedby="password-confirmation-error"
+                        aria-invalid="{{ $errors->has('password_confirmation') ? 'true' : 'false' }}" />
                     @error('password_confirmation')
-                        <p class="mt-2 text-sm text-red-600 dark:text-red-400">
+                        <p id="password-confirmation-error" class="mt-2 text-sm text-red-600 dark:text-red-400"
+                            role="alert">
                             {{ $message }}
                         </p>
                     @enderror
                 </div>
                 <div class="flex items-center gap-4">
-                    <button
-                        class="bg-laravel inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium text-white shadow-sm transition hover:bg-red-600">
-                        <i class="fa-solid fa-user-plus"></i>
+                    <button type="submit"
+                        class="focus-ring bg-laravel focus:ring-laravel inline-flex w-full items-center justify-center gap-2 rounded-lg px-6 py-3 font-medium text-white shadow-sm transition hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2"
+                        aria-label="Create your account">
+                        <i class="fa-solid fa-user-plus" aria-hidden="true"></i>
                         Register
                     </button>
                 </div>
                 <div class="mt-6 text-center">
                     <p class="text-sm text-gray-600 dark:text-gray-400">
                         Already have an account?
-                        <a href="/login" class="text-laravel font-medium transition hover:text-red-600">
+                        <a href="/login"
+                            class="focus-ring text-laravel focus:ring-laravel rounded font-medium transition hover:text-red-600 focus:outline-none focus:ring-2 focus:ring-offset-1"
+                            aria-label="Sign in to your existing account">
                             Login
                         </a>
                     </p>
