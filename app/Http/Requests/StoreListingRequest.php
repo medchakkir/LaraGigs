@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Models\Listing;
 
 class StoreListingRequest extends FormRequest
 {
@@ -12,7 +13,7 @@ class StoreListingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        return $this->user()?->can('create', Listing::class) ?? false;
     }
 
     /**
@@ -24,7 +25,13 @@ class StoreListingRequest extends FormRequest
     {
         return [
             'title' => ['required', 'max:255'],
-            'company' => ['required', 'max:255', Rule::unique('listings', 'company')],
+            'company' => [
+                'required',
+                'max:255',
+                Rule::unique('listings', 'company')->where(function ($query) {
+                    return $query->where('user_id', $this->user()?->id);
+                }),
+            ],
             'location' => ['required', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'website' => ['required', 'url', 'max:255'],
@@ -42,7 +49,7 @@ class StoreListingRequest extends FormRequest
         return [
             'title.required' => 'A job title is required.',
             'company.required' => 'A company name is required.',
-            'company.unique' => 'This company already has a listing.',
+            'company.unique' => 'You already have a listing for this company.',
             'location.required' => 'A location is required.',
             'email.required' => 'An email address is required.',
             'email.email' => 'Please provide a valid email address.',

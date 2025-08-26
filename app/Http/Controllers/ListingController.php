@@ -4,12 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreListingRequest;
 use App\Http\Requests\UpdateListingRequest;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Listing;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
 
 class ListingController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display the 6 latest listings
      */
@@ -80,6 +84,9 @@ class ListingController extends Controller
         $formFields = $request->validated();
 
         if ($request->hasFile('logo')) {
+            if ($listing->logo) {
+                Storage::disk('public')->delete($listing->logo);
+            }
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
         }
 
@@ -96,6 +103,10 @@ class ListingController extends Controller
     public function destroy(Listing $listing): RedirectResponse
     {
         $this->authorize('delete', $listing);
+
+        if ($listing->logo) {
+            Storage::disk('public')->delete($listing->logo);
+        }
 
         $listing->delete();
         return redirect('/')->with('message', 'Listing deleted successfully.');

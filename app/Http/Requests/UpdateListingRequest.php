@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use App\Models\Listing;
 
 class UpdateListingRequest extends FormRequest
 {
@@ -12,7 +13,8 @@ class UpdateListingRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return auth()->check();
+        $listing = $this->route('listing');
+        return $this->user()?->can('update', $listing) ?? false;
     }
 
     /**
@@ -22,9 +24,17 @@ class UpdateListingRequest extends FormRequest
      */
     public function rules(): array
     {
+        $listing = $this->route('listing');
+
         return [
             'title' => ['required', 'max:255'],
-            'company' => ['required', 'max:255'],
+            'company' => [
+                'required',
+                'max:255',
+                Rule::unique('listings', 'company')
+                    ->where(fn($q) => $q->where('user_id', $this->user()?->id))
+                    ->ignore($listing?->id),
+            ],
             'location' => ['required', 'max:255'],
             'email' => ['required', 'email', 'max:255'],
             'website' => ['required', 'url', 'max:255'],
@@ -42,6 +52,7 @@ class UpdateListingRequest extends FormRequest
         return [
             'title.required' => 'A job title is required.',
             'company.required' => 'A company name is required.',
+            'company.unique' => 'You already have a listing for this company.',
             'location.required' => 'A location is required.',
             'email.required' => 'An email address is required.',
             'email.email' => 'Please provide a valid email address.',
