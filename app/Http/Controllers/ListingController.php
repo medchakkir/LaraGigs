@@ -2,44 +2,50 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreListingRequest;
+use App\Http\Requests\UpdateListingRequest;
 use App\Models\Listing;
-use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class ListingController extends Controller
 {
-    // Display the 6 latest listings
-    public function index()
+    /**
+     * Display the 6 latest listings
+     */
+    public function index(): View
     {
         return view('listings.index', [
             'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4)
         ]);
     }
 
-    // Display a single listing
-    public function show(Listing $listing)
+    /**
+     * Display a single listing
+     */
+    public function show(Listing $listing): View
     {
         return view('listings.show', ['listing' => $listing]);
     }
 
-    // Show create listing form
-    public function create()
+    /**
+     * Show create listing form
+     */
+    public function create(): View
     {
+        $this->authorize('create', Listing::class);
+
         return view('listings.create');
     }
 
-    // Store listing
-    public function store(Request $request)
+    /**
+     * Store listing
+     */
+    public function store(StoreListingRequest $request): RedirectResponse
     {
-        $formFields = $request->validate([
-            'title' => ['required', 'max:255'],
-            'company' => ['required', 'max:255', Rule::unique('listings', 'company')],
-            'location' => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'website' => ['required', 'url', 'max:255'],
-            'tags' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'max:2000'],
-        ]);
+        $this->authorize('create', Listing::class);
+
+        $formFields = $request->validated();
 
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
@@ -54,29 +60,24 @@ class ListingController extends Controller
         return redirect('/')->with('message', 'Listing created successfully.');
     }
 
-    // Show edit form
-    public function edit(Listing $listing)
+    /**
+     * Show edit form
+     */
+    public function edit(Listing $listing): View
     {
+        $this->authorize('update', $listing);
+
         return view('listings.edit', ['listing' => $listing]);
     }
 
-    // Update listing
-    public function update(Request $request, Listing $listing)
+    /**
+     * Update listing
+     */
+    public function update(UpdateListingRequest $request, Listing $listing): RedirectResponse
     {
-        // Make sure the authenticated user is the owner of the listing
-        if ($listing->user_id !== auth()->id()) {
-            abort(403, 'Unauthorized action.');
-        }
+        $this->authorize('update', $listing);
 
-        $formFields = $request->validate([
-            'title' => ['required', 'max:255'],
-            'company' => ['required', 'max:255'],
-            'location' => ['required', 'max:255'],
-            'email' => ['required', 'email', 'max:255'],
-            'website' => ['required', 'url', 'max:255'],
-            'tags' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'max:2000'],
-        ]);
+        $formFields = $request->validated();
 
         if ($request->hasFile('logo')) {
             $formFields['logo'] = $request->file('logo')->store('logos', 'public');
@@ -89,20 +90,21 @@ class ListingController extends Controller
         return back()->with('message', 'Listing updated successfully.');
     }
 
-    // Delete listing
-    public function destroy(Listing $listing)
+    /**
+     * Delete listing
+     */
+    public function destroy(Listing $listing): RedirectResponse
     {
-        // Make sure the authenticated user is the owner of the listing
-        if ($listing->user_id !== auth()->id()) {
-            abort(403, 'Unauthorized action.');
-        }
+        $this->authorize('delete', $listing);
 
         $listing->delete();
         return redirect('/')->with('message', 'Listing deleted successfully.');
     }
 
-    // Manage listings
-    public function manage()
+    /**
+     * Manage listings
+     */
+    public function manage(): View
     {
         return view('listings.manage', [
             'listings' => auth()->user()->listings()->get()

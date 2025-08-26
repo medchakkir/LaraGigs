@@ -4,29 +4,69 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Listing extends Model
 {
-
     use HasFactory;
 
-    protected $fillable = ['user_id', 'title', 'company', 'location', 'email', 'website', 'tags', 'logo', 'description'];
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var list<string>
+     */
+    protected $fillable = [
+        'user_id',
+        'title',
+        'company',
+        'location',
+        'email',
+        'website',
+        'tags',
+        'logo',
+        'description'
+    ];
 
-    public function scopeFilter($query, array $filters)
+    /**
+     * The attributes that should be cast.
+     *
+     * @var array<string, string>
+     */
+    protected $casts = [
+        'created_at' => 'datetime',
+        'updated_at' => 'datetime',
+    ];
+
+    /**
+     * Get the route key for the model.
+     */
+    public function getRouteKeyName(): string
     {
-        if ($filters['tag'] ?? false) {
-            $query->where('tags', 'like', '%' . request('tag') . '%');
+        return 'id';
+    }
+
+    /**
+     * Scope a query to filter listings by tag and search term.
+     */
+    public function scopeFilter($query, array $filters): void
+    {
+        if (isset($filters['tag']) && $filters['tag']) {
+            $query->where('tags', 'like', '%' . $filters['tag'] . '%');
         }
 
-        if ($filters['search'] ?? false) {
-            $query->where('title', 'like', '%' . request('search') . '%')
-                ->orWhere('description', 'like', '%' . request('search') . '%')
-                ->orWhere('tags', 'like', '%' . request('search') . '%');
+        if (isset($filters['search']) && $filters['search']) {
+            $query->where(function ($query) use ($filters) {
+                $query->where('title', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('description', 'like', '%' . $filters['search'] . '%')
+                    ->orWhere('tags', 'like', '%' . $filters['search'] . '%');
+            });
         }
     }
 
-    // Relationship with User
-    public function user()
+    /**
+     * Get the user that owns the listing.
+     */
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
