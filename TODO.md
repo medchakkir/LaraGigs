@@ -21,11 +21,11 @@
 - [x] Improve text content and wording throughout the app for clarity and consistency
 
 ## Phase 3 – Backend improvements
-- [ ] Move inline validation to FormRequests
-- [ ] Add authorization (Policies/Gates) so only owners can edit/delete listings
-- [ ] Ensure route model binding is used in controllers
-- [ ] Review fillable/guarded in models
-- [ ] Add database indexes and constraints where needed
+- [x] Move inline validation to FormRequests
+- [x] Add authorization (Policies/Gates) so only owners can edit/delete listings
+- [x] Ensure route model binding is used in controllers
+- [x] Review fillable/guarded in models
+- [x] Add database indexes and constraints where needed
 
 ## Phase 4 – Testing & CI
 - [ ] Add feature tests (index/search, show, create/edit/delete, pagination)

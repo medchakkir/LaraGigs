@@ -2,27 +2,30 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AuthenticateUserRequest;
+use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
-    // Show register/create form
-    public function create()
+    /**
+     * Show register/create form
+     */
+    public function create(): View
     {
         return view('users.register');
     }
 
-    // Create new user
-    public function store(Request $request)
+    /**
+     * Create new user
+     */
+    public function store(StoreUserRequest $request): RedirectResponse
     {
         // Validate and create user
-        $formFields = $request->validate([
-            'name' => 'required|min:3',
-            'email' => ['required', 'email', Rule::unique('users', 'email')],
-            'password' => 'required|confirmed|min:6',
-        ]);
+        $formFields = $request->validated();
 
         // Hash Password
         $formFields['password'] = bcrypt($formFields['password']);
@@ -36,19 +39,20 @@ class UserController extends Controller
         return redirect('/')->with('message', 'User registered successfully.');
     }
 
-    // Show login form
-    public function login()
+    /**
+     * Show login form
+     */
+    public function login(): View
     {
         return view('users.login');
     }
 
-    // Login user
-    public function authenticate(Request $request)
+    /**
+     * Login user
+     */
+    public function authenticate(AuthenticateUserRequest $request): RedirectResponse
     {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|min:6',
-        ]);
+        $credentials = $request->validated();
 
         if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
@@ -60,8 +64,10 @@ class UserController extends Controller
         ])->onlyInput('email');
     }
 
-    // Logout user
-    public function destroy(Request $request)
+    /**
+     * Logout user
+     */
+    public function destroy(Request $request): RedirectResponse
     {
         auth()->logout();
 

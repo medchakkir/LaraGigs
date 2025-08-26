@@ -17,13 +17,13 @@ Route::get('/listings/create', [ListingController::class, 'create'])->middleware
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
 // Show edit form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware(['auth', 'can:update,listing']);
 
 // Update listing
-Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware(['auth', 'can:update,listing']);
 
 // Delete listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware(['auth', 'can:delete,listing']);
 
 // Manage listings
 Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware('auth');
