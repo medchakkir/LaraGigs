@@ -4,7 +4,6 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Models\Listing;
 
 class UpdateListingRequest extends FormRequest
 {
@@ -14,6 +13,7 @@ class UpdateListingRequest extends FormRequest
     public function authorize(): bool
     {
         $listing = $this->route('listing');
+
         return $this->user()?->can('update', $listing) ?? false;
     }
 
@@ -32,7 +32,7 @@ class UpdateListingRequest extends FormRequest
                 'required',
                 'max:255',
                 Rule::unique('listings', 'company')
-                    ->where(fn($q) => $q->where('user_id', $this->user()?->id))
+                    ->where(fn ($q) => $q->where('user_id', $this->user()?->id))
                     ->ignore($listing?->id),
             ],
             'location' => ['required', 'max:255'],

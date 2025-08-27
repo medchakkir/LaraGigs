@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreListingRequest;
 use App\Http\Requests\UpdateListingRequest;
-use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Listing;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\View\View;
@@ -20,7 +20,7 @@ class ListingController extends Controller
     public function index(): View
     {
         return view('listings.index', [
-            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4)
+            'listings' => Listing::latest()->filter(request(['tag', 'search']))->paginate(4),
         ]);
     }
 
@@ -109,6 +109,7 @@ class ListingController extends Controller
         }
 
         $listing->delete();
+
         return redirect('/')->with('message', 'Listing deleted successfully.');
     }
 
@@ -118,7 +119,7 @@ class ListingController extends Controller
     public function manage(): View
     {
         return view('listings.manage', [
-            'listings' => auth()->user()->listings()->get()
+            'listings' => auth()->user()->listings()->get(),
         ]);
     }
 }

@@ -28,9 +28,9 @@
 - [x] Add database indexes and constraints where needed
 
 ## Phase 4 – Testing & CI
-- [ ] Add feature tests (index/search, show, create/edit/delete, pagination)
-- [ ] Add unit tests for model scopes/helpers
-- [ ] Add GitHub Actions workflow for Pint + tests
+- [x] Add feature tests (index/search, show, create/edit/delete, pagination)
+- [x] Add unit tests for model scopes/helpers
+- [x] Add GitHub Actions workflow for Pint + tests
 
 ## Phase 5 – Enhancements (optional)
 - [ ] Dark mode toggle with Tailwind

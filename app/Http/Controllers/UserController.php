@@ -56,6 +56,7 @@ class UserController extends Controller
 
         if (auth()->attempt($credentials)) {
             $request->session()->regenerate();
+
             return redirect('/')->with('message', 'Logged in successfully.');
         }
 

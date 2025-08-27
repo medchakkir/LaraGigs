@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Listing;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
-use App\Models\Listing;
 
 class StoreListingRequest extends FormRequest
 {

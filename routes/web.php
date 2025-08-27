@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
+use Illuminate\Support\Facades\Route;
 
 // All listings
 Route::get('/', [ListingController::class, 'index']);
