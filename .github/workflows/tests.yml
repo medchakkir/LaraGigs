@@ -43,6 +43,11 @@ jobs:
       - name: Install Node dependencies
         run: npm ci
 
+      - name: Clear and cache config
+        run: |
+          php artisan config:cache
+          php artisan cache:clear
+
       - name: Copy Environment File
         run: cp .env.example .env
 
