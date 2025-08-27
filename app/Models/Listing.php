@@ -24,7 +24,7 @@ class Listing extends Model
         'website',
         'tags',
         'logo',
-        'description'
+        'description',
     ];
 
     /**
@@ -51,14 +51,14 @@ class Listing extends Model
     public function scopeFilter($query, array $filters): void
     {
         if (isset($filters['tag']) && $filters['tag']) {
-            $query->where('tags', 'like', '%' . $filters['tag'] . '%');
+            $query->where('tags', 'like', '%'.$filters['tag'].'%');
         }
 
         if (isset($filters['search']) && $filters['search']) {
             $query->where(function ($query) use ($filters) {
-                $query->where('title', 'like', '%' . $filters['search'] . '%')
-                    ->orWhere('description', 'like', '%' . $filters['search'] . '%')
-                    ->orWhere('tags', 'like', '%' . $filters['search'] . '%');
+                $query->where('title', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('description', 'like', '%'.$filters['search'].'%')
+                    ->orWhere('tags', 'like', '%'.$filters['search'].'%');
             });
         }
     }

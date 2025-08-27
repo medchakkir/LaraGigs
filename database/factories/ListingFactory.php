@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,13 +18,14 @@ class ListingFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->jobTitle(),
-            'tags' => implode(', ', $this->faker->words(3)),
-            'company' => $this->faker->company(),
-            'email' => $this->faker->companyEmail(),
-            'website' => $this->faker->url(),
-            'location' => $this->faker->city() . ', ' . $this->faker->countryCode(),
-            'description' => $this->faker->paragraph(5),
+            'user_id' => User::factory(),
+            'title' => 'Listing '.fake()->unique()->numberBetween(1, 100000),
+            'tags' => collect(range(1, 3))->map(fn () => fake()->unique()->word())->implode(', '),
+            'company' => fake()->company(),
+            'email' => fake()->companyEmail(),
+            'website' => fake()->url(),
+            'location' => fake()->city().', '.fake()->countryCode(),
+            'description' => fake()->paragraph(),
         ];
     }
 }
