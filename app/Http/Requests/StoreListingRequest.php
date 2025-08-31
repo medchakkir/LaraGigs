@@ -47,7 +47,7 @@ class StoreListingRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'title.required' => 'A job title is required.',
+            'title.required' => 'A gig title is required.',
             'company.required' => 'A company name is required.',
             'company.unique' => 'You already have a listing for this company.',
             'location.required' => 'A location is required.',
@@ -56,7 +56,7 @@ class StoreListingRequest extends FormRequest
             'website.required' => 'A website URL is required.',
             'website.url' => 'Please provide a valid website URL.',
             'tags.required' => 'At least one tag is required.',
-            'description.required' => 'A job description is required.',
+            'description.required' => 'A gig description is required.',
             'logo.image' => 'The logo must be an image file.',
             'logo.mimes' => 'The logo must be a JPEG, PNG, JPG, or GIF file.',
             'logo.max' => 'The logo must not exceed 2MB.',

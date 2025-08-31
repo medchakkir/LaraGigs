@@ -3,8 +3,8 @@
     <div class="mx-auto max-w-6xl px-4">
         <div class="flex h-16 items-center justify-between">
             <a href="/" class="flex items-center gap-3" aria-label="Go to homepage">
-                <img class="h-9 w-auto" src="{{ asset('images/logo.png') }}" alt="LaraJobs logo" />
-                <span class="sr-only">LaraJobs</span>
+                <img class="h-9 w-auto" src="{{ asset('images/logo.png') }}" alt="LaraGigs logo" />
+                <span class="sr-only">LaraGigs</span>
             </a>
 
             <ul class="flex items-center gap-3 text-sm font-medium" role="menubar">

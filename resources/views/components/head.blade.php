@@ -2,7 +2,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Find the best Laravel jobs and projects on LaraJobs." />
+    <meta name="description" content="Find the best Laravel gigs and projects on LaraGigs." />
 
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" />
 
@@ -67,5 +67,5 @@
         }
     </style>
 
-    <title>@yield('title', 'LaraJobs | Find Laravel Jobs & Projects')</title>
+    <title>@yield('title', 'LaraGigs | Find Laravel Gigs & Projects')</title>
 </head>

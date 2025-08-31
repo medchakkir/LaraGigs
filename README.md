@@ -1,4 +1,4 @@
-<h1 align="center">LaraJobs</h1>
+<h1 align="center">LaraGigs</h1>
 <p align="center">
   A modern job listings platform built with <b>Laravel 12</b>, <b>Blade</b>, and <b>TailwindCSS</b>.
 </p>
@@ -7,11 +7,11 @@
 
 ### 1. Project Overview
 
-LaraJobs is a full‑stack Laravel application that showcases modern Laravel conventions, reusable Blade components, clean routing/controllers, and TailwindCSS styling. It includes authentication, CRUD for job listings, search by tags/keywords/location, pagination, and a custom 404 page.
+LaraGigs is a full‑stack Laravel application that showcases modern Laravel conventions, reusable Blade components, clean routing/controllers, and TailwindCSS styling. It includes authentication, CRUD for job listings, search by tags/keywords/location, pagination, and a custom 404 page.
 
 ### 2. Features
 
-- **Browse job listings**: View a paginated feed of the latest jobs
+- **Browse job listings**: View a paginated feed of the latest gigs
 - **Advanced search**: Filter by tags, keywords, and location
 - **User authentication**: Register, login, logout
 - **Employer dashboard**: Create, edit, and delete your listings
@@ -38,8 +38,8 @@ Steps:
 1. Clone the repository
 
 ```bash
-git clone <your-repo-url> larajobs
-cd larajobs
+git clone <your-repo-url> laragigs
+cd laragigs
 ```
 
 2. Install PHP dependencies
@@ -62,7 +62,7 @@ MySQL
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=larajobs
+DB_DATABASE=laragigs
 DB_USERNAME=root
 DB_PASSWORD=
 ```
@@ -119,7 +119,7 @@ The app will be available at `http://127.0.0.1:8000`.
 - **Post a job**: After logging in, go to "Create Listing" (or `/listings/create`), fill in details such as title, company, location, tags (comma‑separated), and description, then submit.
 - **Manage listings**: Visit "Manage Listings" to edit or delete your own postings.
 - **Edit a job**: From the manage screen or a listing page, click "Edit", update fields, and save.
-- **Search jobs**:
+- **Search gigs**:
   - Use the search bar to filter by keywords and location
   - Click on tag chips to filter by tag
   - Combine keywords and tags for more precise results
