@@ -2,29 +2,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description"
-        content="Find the best Laravel jobs and projects on LaraJobs - the premier platform for Laravel developers and employers." />
-    <meta name="keywords" content="Laravel, jobs, projects, PHP, web development, remote work" />
-    <meta name="author" content="LaraJobs" />
-
-    {{-- Open Graph / Facebook --}}
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="{{ url()->current() }}" />
-    <meta property="og:title" content="LaraJobs - Find Laravel Jobs & Projects" />
-    <meta property="og:description"
-        content="Find the best Laravel jobs and projects on LaraJobs - the premier platform for Laravel developers and employers." />
-    <meta property="og:image" content="{{ asset('images/logo.png') }}" />
-
-    {{-- Twitter --}}
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="{{ url()->current() }}" />
-    <meta property="twitter:title" content="LaraJobs - Find Laravel Jobs & Projects" />
-    <meta property="twitter:description"
-        content="Find the best Laravel jobs and projects on LaraJobs - the premier platform for Laravel developers and employers." />
-    <meta property="twitter:image" content="{{ asset('images/logo.png') }}" />
+    <meta name="description" content="Find the best Laravel gigs and projects on LaraGigs." />
 
     <link rel="icon" href="{{ asset('images/favicon.ico') }}" />
-    <link rel="canonical" href="{{ url()->current() }}" />
 
     {{-- Font Awesome --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
@@ -87,5 +67,5 @@
         }
     </style>
 
-    <title>@yield('title', 'LaraJobs | Find Laravel Jobs & Projects')</title>
+    <title>@yield('title', 'LaraGigs | Find Laravel Gigs & Projects')</title>
 </head>

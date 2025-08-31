@@ -3,7 +3,7 @@
         <x-card
             class="rounded-2xl border border-gray-100 bg-white p-8 shadow-sm dark:border-slate-700 dark:bg-slate-800">
             <header class="mb-8 text-center">
-                <h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">Manage Jobs</h1>
+                <h1 class="mb-2 text-3xl font-bold text-gray-900 dark:text-gray-100">Manage Gigs</h1>
                 <p class="text-gray-600 dark:text-gray-400">Manage your job listings</p>
             </header>
 

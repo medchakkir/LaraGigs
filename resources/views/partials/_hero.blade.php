@@ -6,7 +6,7 @@
         <div class="flex h-[380px] flex-col items-center justify-center space-y-4 text-center">
             <h1 id="hero-title" class="text-5xl font-extrabold tracking-tight text-white md:text-6xl">
                 Lara
-                <span class="text-black drop-shadow-sm">Jobs</span>
+                <span class="text-black drop-shadow-sm">Gigs</span>
             </h1>
             <p class="max-w-2xl text-xl font-semibold text-red-50 md:text-2xl">
                 Find your next Laravel opportunity or hire talented developers
