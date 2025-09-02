@@ -1,159 +1,347 @@
-<h1 align="center">LaraGigs</h1>
+<h1 align="center">
+  <br>
+  LaraGigs
+  <br>
+  <sup>Modern Job Listings Platform</sup>
+</h1>
+
 <p align="center">
-  A modern job listings platform built with <b>Laravel 12</b>, <b>Blade</b>, and <b>TailwindCSS</b>.
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#api">API</a> •
+  <a href="#testing">Testing</a> •
+  <a href="#contributing">Contributing</a>
 </p>
 
-![Homepage](public/images/home.png)
+<p align="center">
+  <img src="https://img.shields.io/badge/Laravel-12.x-FF2D20?style=for-the-badge&logo=laravel&logoColor=white" alt="Laravel">
+  <img src="https://img.shields.io/badge/PHP-8.2+-777BB4?style=for-the-badge&logo=php&logoColor=white" alt="PHP">
+  <img src="https://img.shields.io/badge/TailwindCSS-4.0-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white" alt="TailwindCSS">
+  <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge" alt="License">
+</p>
 
-### 1. Project Overview
+![LaraGigs Homepage](public/images/home.png)
 
-LaraGigs is a full‑stack Laravel application that showcases modern Laravel conventions, reusable Blade components, clean routing/controllers, and TailwindCSS styling. It includes authentication, CRUD for job listings, search by tags/keywords/location, pagination, and a custom 404 page.
+## 📋 Overview
 
-### 2. Features
+LaraGigs is a full-stack web application that connects employers with talent through a modern, intuitive job listings platform. Built with Laravel 12 and styled with TailwindCSS 4.0, it demonstrates best practices in modern web development including clean architecture, reusable components, and comprehensive testing.
 
-- **Browse job listings**: View a paginated feed of the latest gigs
-- **Advanced search**: Filter by tags, keywords, and location
-- **User authentication**: Register, login, logout
-- **Employer dashboard**: Create, edit, and delete your listings
-- **Pagination**: Clean pagination UI for long lists
-- **Custom 404**: Friendly, branded not‑found page
-- **Reusable UI**: Blade layouts and components for consistent design
+## ✨ Features
 
-### 3. Tech Stack
+### Core Functionality
+- 🔍 **Advanced Search & Filtering** - Search by keywords, tags, and location
+- 👤 **User Authentication** - Secure registration, login, and session management
+- 📝 **Complete CRUD Operations** - Create, read, update, and delete job listings
+- 🔒 **Authorization System** - Users can only manage their own listings
+- 📄 **Pagination** - Efficient handling of large datasets
+- 🏷️ **Tag System** - Categorize and filter listings by skills/technologies
+- 📱 **Responsive Design** - Mobile-first approach with TailwindCSS
 
-- **Backend**: Laravel 12, PHP 8+
-- **Frontend**: Blade templates, TailwindCSS
-- **Database**: MySQL (or SQLite)
-- **Build tooling**: Laravel Vite (optional for asset builds)
+### Technical Features
+- 🎨 **Blade Components** - Reusable UI components for consistency
+- 🗄️ **Eloquent ORM** - Clean database interactions with relationships
+- 🛡️ **CSRF Protection** - Security against cross-site request forgery
+- 📤 **File Uploads** - Company logo uploads with validation
+- 🔄 **Database Migrations & Seeders** - Version-controlled schema
+- ⚡ **Vite Integration** - Fast HMR and optimized builds
+- 🧪 **Pest Testing** - Modern testing framework
 
-### 4. Installation
+## 🛠️ Tech Stack
 
-Prerequisites:
-- PHP 8+
-- Composer
-- MySQL or SQLite
-- Node.js + npm (optional, for building frontend assets)
+| Category | Technologies |
+|----------|-------------|
+| **Backend** | Laravel 12, PHP 8.2+ |
+| **Frontend** | Blade Templates, TailwindCSS 4.0, Alpine.js |
+| **Database** | MySQL 8.0+ / PostgreSQL / SQLite |
+| **Build Tools** | Vite, npm |
+| **Testing** | Pest, PHPUnit |
+| **Development** | Laravel Sail (Docker), Laravel Pint (Code Style) |
 
-Steps:
-1. Clone the repository
+## 📦 Installation
 
+### Prerequisites
+
+- PHP >= 8.2
+- Composer >= 2.5
+- Node.js >= 18.0 & npm >= 9.0
+- MySQL >= 8.0 (or PostgreSQL/SQLite)
+- Git
+
+### Quick Start
+
+1. **Clone the repository**
 ```bash
-git clone <your-repo-url> laragigs
+git clone https://github.com/yourusername/laragigs.git
 cd laragigs
 ```
 
-2. Install PHP dependencies
-
+2. **Install PHP dependencies**
 ```bash
 composer install
 ```
 
-3. Configure environment
+3. **Install Node dependencies**
+```bash
+npm install
+```
 
+4. **Environment setup**
 ```bash
 cp .env.example .env
 ```
 
-Update `.env` with your database settings. Examples:
+5. **Configure your database** in `.env`:
 
-MySQL
-
+**For MySQL:**
 ```env
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=laragigs
 DB_USERNAME=root
-DB_PASSWORD=
+DB_PASSWORD=your_password
 ```
 
-SQLite
-
+**For SQLite (Development):**
 ```env
 DB_CONNECTION=sqlite
 DB_DATABASE=database/database.sqlite
 ```
 
-Then create the file if using SQLite:
-
-```bash
-mkdir -p database && type NUL > database\database.sqlite
-```
-
-4. Generate the application key
-
+6. **Generate application key**
 ```bash
 php artisan key:generate
 ```
 
-5. Run database migrations
+7. **Create database** (SQLite only)
+```bash
+touch database/database.sqlite
+```
 
+8. **Run migrations**
 ```bash
 php artisan migrate
 ```
 
-6. (Optional) Seed sample data
-
+9. **Seed sample data** (optional)
 ```bash
 php artisan db:seed
 ```
 
-7. (Optional) Install/build frontend assets
-
+10. **Build frontend assets**
 ```bash
-npm install
+npm run build
+```
+
+### 🚀 Running the Application
+
+**Development mode with hot reload:**
+```bash
 npm run dev
 ```
+This command runs the Laravel server, queue worker, and Vite dev server concurrently.
 
-8. Start the development server
-
+**Or run separately:**
 ```bash
+# Terminal 1: Laravel server
 php artisan serve
+
+# Terminal 2: Vite dev server
+npm run dev
+
+# Terminal 3: Queue worker (if using jobs)
+php artisan queue:listen
 ```
 
-The app will be available at `http://127.0.0.1:8000`.
+Visit `http://localhost:8000` to see the application.
 
-### 5. Usage
+## 📚 Usage
 
-- **Register**: Navigate to `/register`, create an account, and sign in.
-- **Post a job**: After logging in, go to "Create Listing" (or `/listings/create`), fill in details such as title, company, location, tags (comma‑separated), and description, then submit.
-- **Manage listings**: Visit "Manage Listings" to edit or delete your own postings.
-- **Edit a job**: From the manage screen or a listing page, click "Edit", update fields, and save.
-- **Search gigs**:
-  - Use the search bar to filter by keywords and location
-  - Click on tag chips to filter by tag
-  - Combine keywords and tags for more precise results
+### User Workflows
 
-### 7. Contributing
+#### For Job Seekers
+1. Browse listings on the homepage
+2. Use search bar for keywords/location
+3. Click tags to filter by technology
+4. View detailed listing information
+5. Contact employers via provided email
 
-Contributions are welcome!
+#### For Employers
+1. Register/login to your account
+2. Click "Post Job" to create a listing
+3. Fill in job details:
+   - Job title and company name
+   - Location (remote/on-site)
+   - Required skills (comma-separated tags)
+   - Job description
+   - Company logo (optional)
+4. Manage your listings from the dashboard
+5. Edit or delete postings as needed
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/your-feature`
-3. Commit your changes: `git commit -m "feat: add your feature"`
-4. Push to your fork: `git push origin feature/your-feature`
-5. Open a Pull Request
+### Key Routes
 
-Please follow PSR standards and include tests where applicable.
+| Method | URI | Description | Auth Required |
+|--------|-----|-------------|---------------|
+| GET | `/` | Homepage with all listings | No |
+| GET | `/listings/{id}` | Single listing details | No |
+| GET | `/listings/create` | Create listing form | Yes |
+| POST | `/listings` | Store new listing | Yes |
+| GET | `/listings/{id}/edit` | Edit listing form | Yes (owner) |
+| PUT | `/listings/{id}` | Update listing | Yes (owner) |
+| DELETE | `/listings/{id}` | Delete listing | Yes (owner) |
+| GET | `/listings/manage` | User's listings dashboard | Yes |
+| GET | `/register` | Registration form | No |
+| POST | `/users` | Create new user | No |
+| GET | `/login` | Login form | No |
+| POST | `/users/authenticate` | Authenticate user | No |
+| POST | `/logout` | Logout user | Yes |
 
-### 8. License
+## 🧪 Testing
 
-This project is licensed under the **MIT License**. See `LICENSE` for details.
+### Running Tests
 
-### Folder Structure Overview
+```bash
+# Run all tests
+php artisan test
 
-Key folders in this project:
+# Run with coverage
+php artisan test --coverage
 
-- `app/Http/Controllers/`: Application controllers (e.g., listings, users)
-- `app/Models/`: Eloquent models (e.g., `Listing`, `User`)
-- `routes/web.php`: Web routes for pages and actions
-- `resources/views/`: Blade templates
-  - `resources/views/components/`: Reusable Blade components (cards, tags, layout)
-  - `resources/views/listings/`: Listing pages (index, show, create, edit, manage)
-  - `resources/views/users/`: Auth views (register, login)
-- `resources/css/` and `resources/js/`: Frontend assets (TailwindCSS, app JS)
-- `public/`: Public assets served by the web server (images, compiled assets)
-- `database/migrations/`: Database schema definitions
-- `database/seeders/`: Database seeders for sample data
+# Run specific test suite
+php artisan test --testsuite=Feature
 
-If you use Vite, compiled assets will be output per your Vite config.
+# Run with Pest (if configured)
+./vendor/bin/pest
+```
+
+### Test Structure
+```
+tests/
+├── Feature/
+│   ├── ListingTest.php
+│   ├── AuthenticationTest.php
+│   └── SearchTest.php
+└── Unit/
+    ├── ListingModelTest.php
+    └── UserModelTest.php
+```
+
+## 🔧 Configuration
+
+### Environment Variables
+
+Key `.env` configurations:
+
+```env
+# Application
+APP_NAME=LaraGigs
+APP_ENV=local|production
+APP_DEBUG=true|false
+APP_URL=http://localhost
+
+# Database
+DB_CONNECTION=mysql|pgsql|sqlite
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=laragigs
+DB_USERNAME=root
+DB_PASSWORD=
+
+# Mail (for notifications)
+MAIL_MAILER=smtp
+MAIL_HOST=mailhog
+MAIL_PORT=1025
+
+# Storage
+FILESYSTEM_DISK=local|public|s3
+
+# Queue
+QUEUE_CONNECTION=sync|database|redis
+```
+
+### Storage Configuration
+
+For production, configure file storage:
+
+```bash
+# Link storage directory
+php artisan storage:link
+
+# Set proper permissions
+chmod -R 775 storage
+chmod -R 775 bootstrap/cache
+```
+
+## 📁 Project Structure
+
+```
+laragigs/
+├── app/
+│   ├── Http/
+│   │   ├── Controllers/
+│   │   │   ├── ListingController.php
+│   │   │   └── UserController.php
+│   │   └── Middleware/
+│   ├── Models/
+│   │   ├── Listing.php
+│   │   └── User.php
+│   └── Policies/
+│       └── ListingPolicy.php
+├── database/
+│   ├── migrations/
+│   ├── factories/
+│   └── seeders/
+├── resources/
+│   ├── views/
+│   │   ├── components/
+│   │   ├── listings/
+│   │   └── users/
+│   ├── css/
+│   └── js/
+├── routes/
+│   └── web.php
+├── tests/
+├── public/
+└── storage/
+```
+
+## 🤝 Contributing
+
+We welcome contributions! Please follow these steps:
+
+1. **Fork the repository**
+2. **Create a feature branch**
+```bash
+git checkout -b feature/amazing-feature
+```
+3. **Commit your changes**
+```bash
+git commit -m 'feat: add amazing feature'
+```
+4. **Push to your fork**
+```bash
+git push origin feature/amazing-feature
+```
+5. **Open a Pull Request**
+
+### Development Guidelines
+
+- Follow [PSR-12](https://www.php-fig.org/psr/psr-12/) coding standards
+- Run code formatter before committing:
+```bash
+./vendor/bin/pint
+```
+- Write tests for new features
+- Update documentation as needed
+- Use conventional commits format
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- [Laravel](https://laravel.com) - The PHP Framework for Web Artisans
+- [TailwindCSS](https://tailwindcss.com) - A utility-first CSS framework
+- [Brad Traversy](https://www.traversymedia.com) - Original LaraGigs tutorial inspiration
