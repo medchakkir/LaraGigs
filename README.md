@@ -138,22 +138,4 @@ Please follow PSR standards and include tests where applicable.
 
 ### 8. License
 
-This project is licensed under the **MIT License**. See `LICENSE` for details.
-
-### Folder Structure Overview
-
-Key folders in this project:
-
-- `app/Http/Controllers/`: Application controllers (e.g., listings, users)
-- `app/Models/`: Eloquent models (e.g., `Listing`, `User`)
-- `routes/web.php`: Web routes for pages and actions
-- `resources/views/`: Blade templates
-  - `resources/views/components/`: Reusable Blade components (cards, tags, layout)
-  - `resources/views/listings/`: Listing pages (index, show, create, edit, manage)
-  - `resources/views/users/`: Auth views (register, login)
-- `resources/css/` and `resources/js/`: Frontend assets (TailwindCSS, app JS)
-- `public/`: Public assets served by the web server (images, compiled assets)
-- `database/migrations/`: Database schema definitions
-- `database/seeders/`: Database seeders for sample data
-
-If you use Vite, compiled assets will be output per your Vite config.
+This project is licensed under the MIT License - see the LICENSE file for details.
